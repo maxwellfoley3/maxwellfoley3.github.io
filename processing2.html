@@ -1,0 +1,102 @@
+    <script src="processing-1.4.1.min.js"></script>
+
+<canvas style="border:1px solid #000000;"  id="canvas"> </canvas>
+<script>     
+function processor(pjs)
+{
+    var canvasWidth = 400;
+    var canvasHeight = 400;
+    var img;
+    var pixels;
+    var pixels2;
+    
+    var off;
+
+    var xoff;
+    var xoff2;
+    
+    var yoff;
+    var yoff2;
+
+    
+    pjs.setup = function()
+    {
+	
+	with(pjs)
+	{
+	    
+	    noLoop();
+	    size(canvasWidth, canvasHeight,P2D);
+	    colorMode(HSB, 255);
+	    img = createImage(canvasWidth,canvasHeight);
+	    pixels = img.pixels.toArray();
+
+	}
+    }
+
+    pjs.draw = function()
+    {
+	with(pjs){
+	    
+	    
+	    xoff = 0.0;
+	    xoff2 = 0.0;
+
+	    off = .02;
+	    
+	 
+	    for (var x =  0;  x < width;  x++)
+	    {
+		yoff =  0.0;
+		yoff2 =  0.0;
+		
+		for (var y =  0;  y < height;  y++)
+		{
+
+		    pixels[x+(y*width)] = color(0,0,map(noise(xoff+2000,yoff+2000),0,1,0,255),1);
+		    yoff += off;
+		}
+		
+		xoff += off;
+	    }
+		
+
+	    pixels2 = pixels;
+	    off = .01;
+	    
+	    
+	    xoff = 0.0;
+	    
+	    for (var x = 0; x < width; x++)
+	    {
+		yoff = 0.0;
+	     
+		for (var y = 0; y < height; y++)
+		{        
+		    pixels2[x+(y*width)] = color(0,0,map(noise(xoff+1000 + ((mouseX*4)/(pixels[x+(y*width)] & 0xFF)),yoff+1000),0,1,0,255));
+		    yoff += (mouseY*.001)/(pixels[x+(y*width)] & 0xFF);
+	        }
+	      
+		xoff += off; 
+	    }
+	    
+	    console.log(pixels2[555]);
+	    
+	    img.pixels.set(pixels2);
+	    img.loaded=true;
+	    image(img,0,0);
+    
+	}
+    }
+    
+    pjs.mousePressed = function(){
+	with(pjs){
+        
+	    redraw();
+	}	
+    }
+}
+
+var canvas = document.getElementById("canvas");
+var p = new Processing(canvas, processor);
+</script>

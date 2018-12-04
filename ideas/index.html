@@ -1,0 +1,323 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>ideaWorld</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<!--theme style-->
+<!--<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	-->
+<script src="js/jquery.min.js"></script>
+
+<!--//theme style-->
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Ideas" />
+-->
+
+<script type="application/x-javascript">
+    addEventListener("load", function() {
+	setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar(){ window.scrollTo(0,1); }
+</script>
+<!-- start menu -->
+<!--<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />-->
+
+<!--
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+-->
+<!-- /start menu -->
+</head>
+<body> 
+<!--header-->
+
+<!--
+<script src="js/responsiveslides.min.js"></script>
+<script>  
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 1000,
+        namespace: "callbacks",
+        pager: false,
+      });
+    });
+  </script>
+-->
+
+<div class="header-top">
+	 <div class="header-bottom">			
+				<div>
+					<h1><a href="index.html">ideaworld</a></h1>					
+				</div>
+			 <!---->		 
+			 <div>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="product.html">See All Ideas</a></li>
+					<li><a href="submit_idea.html">Submit an Idea</a></li>
+					<li><a href="my_idea.html">My Submitted Ideas</a></li>					
+				</ul>			
+			 </div>
+
+<script type="text/javascript">
+ 
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 1 * 24 * 3600 * 1000); // plus 30 days
+  
+    function setCookie(name, value)
+    {
+      document.cookie=name + "=" + value + "; path=/; expires=" + expiry.toGMTString();
+    }
+	
+    function getCookie(name)
+    {
+     var re = new RegExp(name + "=([^;]+)");
+     var value = re.exec(document.cookie);
+     return (value != null) ? unescape(value[1]) : null;
+    }
+
+function getJsonFromUrl(hashBased) {
+    var query;
+    if(hashBased) {
+        var pos = location.href.indexOf("?");
+        if(pos==-1) return [];
+        query = location.href.substr(pos+1);
+    }
+    else {
+        query = location.search.substr(1);
+    }
+    var result = {};
+    query.split("&").forEach(function(part) {
+            if(!part) return;
+            part = part.split("+").join(" "); // replace every + with space, regexp-free version
+            var eq = part.indexOf("=");
+            var key = eq>-1 ? part.substr(0,eq) : part;
+            var val = eq>-1 ? decodeURIComponent(part.substr(eq+1)) : "";
+            var from = key.indexOf("[");
+            if(from==-1) result[decodeURIComponent(key)] = val;
+            else {
+            var to = key.indexOf("]");
+            var index = decodeURIComponent(key.substring(from+1,to));
+            key = decodeURIComponent(key.substring(0,from));
+            if(!result[key]) result[key] = [];
+            if(!index) result[key].push(val);
+            else result[key][index] = val;
+            }
+            });
+    return result;
+}
+
+var urlJson = getJsonFromUrl(false);
+if(urlJson.logout == "true")   
+{
+	setCookie("loggedIn", "false");
+}
+
+	if(getCookie("loggedIn") == "true")
+	{
+		document.write("<a href=\"index.html?logout=true\"><span class=\"label label-primary\">Logout</span></a>");
+	}
+	else
+	{	
+		document.write("<a href=\"loginreg.html\"><span class=\"label label-primary\">Login</span></a>");
+		document.write("<a href=\"loginreg.html\"><span class=\"label label-primary\">Register</span></a></h2>	</div>");	
+	}			
+</script>
+
+<!---->	
+<!---->
+
+<script src="js/bootstrap.js"> </script>
+<script type="text/javascript" src="js/defiant.js/src/defiant.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/string.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/ie.polyfill.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.search.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.toXML.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.mtrace.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/node.toJSON.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/node.select.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/node.serialize.js"></script>
+<script type="text/javascript" src="data.js"></script>
+
+
+<script type="text/javascript">
+	function searchById(e)
+	{
+		var url = "product.html?keywords="+encodeURIComponent(document.getElementById("searchText").value);
+		if(!e.keyCode || e.keyCode == 13)
+		{
+			document.location.href = url;
+		}
+	}
+</script>
+
+<div id="tfheader" align="left">
+		<div id="tfnewsearch">
+			<input type="text" class="tftextinput" size="100%" width="100%" id="searchText" onkeyup="searchById(event)">
+			<input type="submit" value="Search" class="tfbutton" onclick="searchById(event)">
+		</div>
+		
+		<div class="tfclear">
+	</div>
+</div>
+<br>
+<div class="offers">
+	 <div class=" col-md-5 container">
+	 <h3>Trending Ideas</h3>
+	 <div class="items_sec">
+	 	<script type="text/javascript">
+			    found = JSON.search(data,'//idea[share_check="Y"]');
+			    console.log(found.length);
+			    for(var i = 0; i<4; i++){
+				    if(found.length > i && found[i].picture)
+				    {
+					document.write("<div class=\"col-md-3 feature-grid\">");
+					document.write("<a href=\"single.html?idea="+found[i].id+"\"><img src=\""+found[i].picture+"\" alt=\"\"/>");
+					document.write("<div class=\"arrival-info\">");
+					document.write("<h4>"+found[i].title+"</h4>");
+					document.write("</div>");
+					document.write("</a> </div>");
+				    }
+				    else
+				    {
+					alert(i);
+				    }
+			    }
+			    </script>
+	 </div>
+	 </div>
+	 <div class="col-md-2"></div>
+	 <div class=" col-md-5 container">
+	 <h3>Favorite Ideas</h3>
+	 <div class="items_sec">
+
+<script type="text/javascript">
+function getCookie(cname) {
+    var name = cname + "=";
+    console.log(document.cookie);
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+	var c = ca[i];
+	while (c.charAt(0)==' ') {
+	    c = c.substring(1);
+	}
+	if (c.indexOf(name) == 0) {
+	    return c.substring(name.length,c.length);
+	}
+    }
+    return "";
+}
+
+	//https://www.perlscriptsjavascripts.com/js/cookies.html
+function setCookie(name, value, expires, path, domain, secure){
+    cookieStr = name + "=" + value + "; ";
+    
+    if(expires){
+	    expires = setExpiration(expires);
+	    cookieStr += "expires=" + expires + "; ";
+    }
+    if(path){
+	    cookieStr += "path=" + path + "; ";
+    }
+    if(domain){
+	    cookieStr += "domain=" + domain + "; ";
+    }
+    if(secure){
+	    cookieStr += "secure; ";
+    }
+    
+    document.cookie = cookieStr;
+}
+
+
+function setExpiration(cookieLife){
+    var today = new Date();
+    var expr = new Date(today.getTime() + cookieLife * 24 * 60 * 60 * 1000);
+    return  expr.toGMTString();
+}
+
+		function removeCookie(id) {
+			var favorites = getCookie("favorites");
+			if(favorites == "") {}
+			else
+			{
+				setCookie('favorites', '', -1);
+				var split = favorites.split(",");
+				var newcookie = "";
+				for(var j = 0; j < split.length; j++)
+				{
+					var cur_id = split[j];
+					if(cur_id == id)
+					{
+						continue;
+					}
+					if(newcookie!="")
+					{
+						newcookie += ",";
+					}
+					newcookie += cur_id;
+				}
+				setCookie('favorites', newcookie, 3, '/');
+			}		
+		}
+
+		var favorites = getCookie("favorites");
+		console.log(favorites);
+		if(favorites == ""){}
+		else{
+			var foundId = [];
+			var split = favorites.split(",");
+			for(var j = 0; j<split.length; j++){
+				var id = split[j];
+				if(foundId.indexOf(id) > -1)
+				{
+					continue;
+				}
+				foundId.push(id);
+				found = JSON.search(data,"//idea[id="+id+"]");
+				console.log(found[0]);
+				document.write("<div id=\"favorite"+found[0].id+"\">");
+				document.write("<div class=\"col-md-3 feature-grid\">");
+				document.write("<a href=\"single.html?idea="+found[0].id+"\"><img src=\""+found[0].picture+"\" alt=\"\"/>");
+				document.write("<div class=\"arrival-info\">");
+				document.write("<h4>"+found[0].title+"</h4>");
+				document.write("</div><div>");
+				document.write("<a href=\"single.html?idea="+found[0].id+"\">");
+				document.write("</div> </a>");
+				document.write("<div class=\"vi\" style=\"margin: auto auto; text-align:center;\">");
+				document.write("<a href=\"index.html\" onclick=\"removeCookie("+found[0].id+");\"><span style=\"text-align:center\"></span>Remove</a>");
+				document.write("</div> </a></div></div>");
+			}
+		}
+		</script>
+	 </div>
+	 </div>
+</div>
+<div class="items">
+	<div class="container">
+	</div>
+</div>
+<!---->
+<br/>
+<div class="copywrite">
+	<div class="container">
+		<div class="copy">
+			<p>whatever whatever whatever whatever</p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!---->
+</body>
+</html>

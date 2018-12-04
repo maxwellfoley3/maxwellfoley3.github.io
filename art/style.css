@@ -1,0 +1,420 @@
+body {
+    background-color:#fff;    
+}
+
+/*screen is bigger than width of box1 and box2*/
+/*both boxes are fixed with, box2 is centered between box 1
+ and edge of screen*/
+/*somehow there is a mysterious 25 pixels on left side idk wehre it comes from */
+/*min width is 25 + 25 + 400 + 50 + 350 + 25 = 850*/
+
+
+@media screen and (min-width:850px) {
+    body
+    {
+      background-color:red;
+      
+    }
+  
+    .box1
+    {
+        width:400px;
+        position: relative;
+        float:left;
+        margin-left:25px;
+        margin-top:200px;
+    }
+    
+    #box2container
+    {
+        width:auto;
+        margin-left:500px;
+        margin-right:25px;
+        text-align:center;
+        background-color:green;
+    }
+    }
+    .box2
+    {
+        width:350px;
+    }
+    #box2containerB
+    {
+        position:fixed;
+        right:25px;
+    }
+
+    .box3
+    {
+        margin-left:25px;
+        margin-right:450px;
+        top:50px;
+        position:relative;
+        clear:both;
+    }
+
+}
+
+/*min-width calculated by 25 + 25 + 400 + 50 + 175 + 25 = 625*/
+
+@media screen and (min-width:675px)  and (max-width:849px) {
+    body
+    {
+      background-color:blue;
+      
+    }
+
+    .box1
+    {
+        width:400px;
+        position: relative;
+        float:left;
+        margin-left:25px;
+        top:200px;
+    }
+    
+    #box2container
+    {
+        width:auto;
+        position:fixed;
+        margin-left:500px;
+        margin-right:25px;
+        text-align:center;
+        background-color:green;
+    }
+    
+    .box2
+    {
+        width:inherit;
+    }
+}
+
+@media screen and (max-width:676px) {
+    body
+    {
+      background-color:yellow;
+      
+    }
+    
+    .box1
+    {
+        max-width:400px;
+        min-width:200px;
+        position: relative;
+        float:left;
+        margin-left:25px;
+        margin-bottom: 40px; 
+       /* top:200px;*/
+    }
+    
+    #box2container
+    {
+        width:auto;
+        max-width:400px;
+        min-width:200px;
+        position: relative;
+        float:left;
+        margin-left:25px;
+        background-color:green;
+    }
+    
+    .box2 
+    {
+        width:inherit;
+    }    
+}
+
+
+
+
+
+.box1 {
+   /* position: absolute;
+    margin-left: 25px;
+    margin-top: 200px;
+    width:400px;*/
+    padding:15px;
+    border: 3px solid #000000;
+    background-color:#eee;
+    font-family: Courier, fixed-width;
+    font-size: 8pt;
+}
+
+.box1 #links {
+    float:right;
+    width:250px;
+    background-color:orange;
+    
+}
+
+
+.box1 #face {
+    width:auto;
+    margin-right:265px;
+    background-color:purple;
+    text-align:center;
+    
+}
+
+.box1 #face img {
+    width:90%;
+    padding:8px;
+    
+}
+
+
+.box1 #contact {
+    clear:both; 
+}
+
+
+.box1 ul {
+    list-style-type: circle;
+    padding: 0px;
+    margin: 20px;
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: 6pt;
+    text-transform: uppercase;
+
+
+}
+
+.box1 ul li {
+    padding: 5px;
+    margin: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #222;
+}
+
+.box1 ul li:hover {
+    border-color: #fff;
+    background-color: #fff;
+}
+
+.box1 ul li a {
+    text-decoration: none;
+    color: #888;      
+}
+
+.box1 ul li a:hover {
+    text-decoration: none;
+    color: #333;
+
+}
+
+.box2 {
+   /* position: absolute;
+    margin-left:500px;
+    margin-top: 100px;
+    width:400px;*/
+    padding: 15px;
+    border: 3px solid #000000;
+    background-color:#eee;
+    font-family: Courier, fixed-width;
+    font-size: 8pt;
+    text-align:left;
+    
+}
+
+/*
+#cswork {
+    position: absolute;
+    margin-left:500px;
+    margin-top: 100px;
+    padding: 15px;
+    width:400px;
+    border: 3px solid #000000;
+    background-color:#eee;
+    display: none;
+    font-family: Courier, fixed-width;
+    font-size: 8pt;
+   
+}
+
+#resume {
+    position: absolute;
+    margin-left:500px;
+    margin-top: 50px;
+    padding: 15px;
+    width:500px;
+    border: 3px solid #000000;
+    background-color:#eee;
+    display: none;
+}*/
+
+.box2 #resumeBody {
+    background-color:#fff;
+    padding:10px;
+    overflow:scroll;
+    font-family: Helvetica, sans-serif;
+    font-size: 8pt;    
+    
+}
+
+.box3 {
+ /*   position: absolute;
+    margin-left:100px;
+    margin-top: 550px;*/
+    padding: 15px;
+    border: 3px solid #000000;
+    background-color:#eee;
+    /*visibility: hidden;*/
+    font-family: Courier, fixed-width;
+    font-size: 8pt;
+    margin-bottom: 50px;
+    
+}
+
+.box3 #viewerSelector {
+    /*display: inline-block;*/
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.box3 #viewerImgDiv {
+    background-image: url(spinning-wheel.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.box3 #viewerImgDiv img {
+    max-width: 500px;
+    max-height: 550px;
+    margin:5px;
+}
+
+.box3 #viewerTitle {
+    text-align:center;
+    font-weight:bold;
+    margin: 5px;
+}
+.box3 #viewerDescription {
+    text-align:center;    
+    margin: 5px;
+
+}
+
+
+.box3 #viewerSelector #circledark {
+    display: inline-block;
+    width:5px;
+    height:5px;
+    background-image: url(circledark.gif);
+    background-size: 100% 100%;
+    margin-bottom:5px;
+    margin-left:10px;
+    margin-right:10px;
+   
+   /* float:left;*/
+
+}
+
+.box3 #viewerSelector #circlelight {
+    display: inline-block;
+    width:5px;
+    height:5px;
+    background-image: url(circlelight.gif);
+    background-size: 100% 100%;
+    margin-bottom:5px;
+    margin-left:10px;
+    margin-right:10px;
+  /*  float:left;*/
+}
+
+.box3 #viewerSelector #leftarrow {
+    display: inline-block;
+    width:15px;
+    height:20px;
+    background-image: url(lefttrianglelight.gif);
+    background-size: 100% 100%;
+    margin-right:30px;
+}
+
+.box3 #viewerSelector #leftarrow:hover {
+    background-image: url(lefttriangledark.gif);
+    
+}
+
+.box3 #viewerSelector #rightarrow {
+    display: inline-block;
+    width:15px;
+    height:20px;
+    background-image: url(righttrianglelight.gif);
+    background-size: 100% 100%;
+    margin-left:30px;
+    
+}
+
+
+.box3 #viewerSelector #rightarrow:hover {
+    background-image: url(righttriangledark.gif);
+    
+}
+
+
+.xButton {
+    float:right;
+    width:15px;
+    height:15px;
+    background-image: url(xbuttonlight.gif);
+    background-size: 100% 100%;    
+}
+
+.xButton:hover {
+    background-image: url(xbuttondark.gif);
+}
+
+#myName {
+    position: absolute;
+    color:#ddd;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 135pt;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    text-shadow: 10px 10px #777;
+}
+
+#myName #lastName {
+    position: absolute;
+    padding-left: 500px;
+    
+}
+
+#websiteName {
+    color:#222;
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 36pt;
+    text-transform: lowercase;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;    
+}
+
+#websiteAcronym {
+    position: fixed;
+    bottom: -5px;
+    right: 5px;      
+    font-family: Courier, fixed-width;
+    font-size: 8pt;
+    color: #fff;
+    height: 30px;
+    margin: 10px;
+
+}
+
+
+#websiteAcronym:hover {
+    color: #000;
+}
+
+
+
+

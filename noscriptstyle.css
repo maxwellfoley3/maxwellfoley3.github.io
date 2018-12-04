@@ -1,0 +1,7 @@
+#box1 #links.script {
+    display:none;
+}
+
+#box1 #links.no-script {
+    display:block;
+}

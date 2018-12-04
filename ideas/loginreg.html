@@ -1,0 +1,288 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>ideaWorld</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<!--theme style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<script src="js/jquery.min.js"></script>
+
+<!--//theme style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Ideas" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<!-- /start menu -->
+</head>
+<body> 
+<!--header-->	
+<script src="js/responsiveslides.min.js"></script>
+<script>  
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: false,
+      });
+    });
+  </script>
+  
+  <script type="text/javascript">
+  
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 1 * 24 * 3600 * 1000); // plus 30 days
+  
+    function setCookie(name, value)
+    {
+      document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+    }
+	
+	function getCookie(name)
+    {
+     var re = new RegExp(name + "=([^;]+)");
+     var value = re.exec(document.cookie);
+     return (value != null) ? unescape(value[1]) : null;
+    }
+
+//http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+
+function registerFormFunc() {
+    var x = document.forms["registerForm"]["regUsername"].value;
+    var pass1 = document.forms["registerForm"]["regPassword"].value;
+    var pass2 = document.forms["registerForm"]["regPassword2"].value;
+	
+    var email1 = document.forms["registerForm"]["email"].value;
+    var email2 = document.forms["registerForm"]["email2"].value;
+
+    if (x == null || x == "") {
+        alert("Username must be filled out");
+        return false;
+    }
+
+    if (pass1 == null || pass1 == "") {
+        alert("Password must be filled out");
+        return false;
+    }
+	
+	if (pass1 != pass2 ) {
+        alert("Password must be matched !!");
+        return false;
+    }
+    if (email1 == null || email1 == "") {
+        alert("Email must be filled out");
+        return false;
+    }
+
+    if(!validateEmail(email1))
+    {
+	alert("Invalid email !!");
+	return false;
+    }
+
+    if (email1 != email2 ) {
+        alert("Email must be matched !!");
+        return false;
+    }	
+		
+   setCookie("savedUsername", registerForm.regUsername.value);	  
+   setCookie("savedPassword", registerForm.regPassword.value);
+   
+   alert("User account created !!")
+   window.location.assign("./index.html")
+   setCookie("loggedIn", "true");
+   return true;    
+}
+
+function loginFormFunc() {
+    var usr = document.forms["loginForm"]["loginUsername"].value;
+    var pwd = document.forms["loginForm"]["loginPassword"].value;	
+	
+    if (usr == null || usr == "") {
+        alert("Username must be filled out");
+        return false;
+    }
+    if (pwd == null || pwd == "") {
+        alert("Password must be filled out");
+        return false;
+    }	
+	if (usr == getCookie("savedUsername") && pwd == getCookie("savedPassword")) {
+		alert("Login successful !!");
+		window.location.assign("./index.html")
+		setCookie("loggedIn", "true");
+		return true;    
+    }else{
+		alert("Cannot find user information!!");
+	    return false;
+	}
+}
+
+</script>
+  
+  
+<div class="header-top">
+	 <div class="header-bottom">			
+				<div class="logo">
+					<h1><a href="index.html">ideaworld</a></h1>					
+				</div>
+			 <!---->		 
+			 <div class="top-nav">
+				<ul class="memenu skyblue"><li class="grid"><a href="index.html">Home</a></li>
+					<li class="grid"><a href="product.html">See all ideas</a>
+					</li>
+					<li class="grid"><a href="submit_idea.html">Submit an Idea</a></li>
+					<li class="grid"><a href="my_idea.html">My Submitted Ideas</a></li>				
+				</ul>			
+			 </div>
+				<div class="cart box_1">
+					<h2 class="b2">
+<script type="text/javascript">
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 1 * 24 * 3600 * 1000); // plus 30 days
+  
+    function setCookie(name, value)
+    {
+      document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+    }
+	
+	function getCookie(name)
+    {
+     var re = new RegExp(name + "=([^;]+)");
+     var value = re.exec(document.cookie);
+     return (value != null) ? unescape(value[1]) : null;
+    }
+
+	if(getCookie("loggedIn") == "true")
+	{
+		document.write("<a href=\"index.html?logout=true\"><span class=\"label label-primary\">Logout</span></a>");
+	}
+	else
+	{	
+		document.write("<a href=\"loginreg.html\"><span class=\"label label-primary\">Login</span></a>");
+		document.write("<a href=\"loginreg.html\"><span class=\"label label-primary\">Register</span></a></h2>	</div>");	
+	}			
+</script>
+			 <div class="clearfix"> </div>
+			 <!---->		 
+			 </div>
+			<div class="clearfix"> </div>
+</div>
+<!---->	
+<!---->
+<script src="js/bootstrap.js"> </script>
+<script type="text/javascript" src="js/defiant.js/src/defiant.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/string.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/ie.polyfill.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.search.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.toXML.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/json.mtrace.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/node.toJSON.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/node.select.js"></script>
+<script type="text/javascript" src="js/defiant.js/src/node.serialize.js"></script>
+<script type="text/javascript" src="data.js"></script>
+
+<!--header//-->
+<div class="product-model">	 
+	 <div class="container">
+			<ol class="breadcrumb">
+		  <li><a href="index.html">Home</a></li>
+		  <li class="active">Login/Register</li>
+		 </ol>
+		 <h2>Login/Register</h2>			
+		 <br>
+ <div class="col-md-5">
+	 <h4>Login</h4>
+	 <br>
+    <form class="form-horizontal" name="loginForm" method="put" action="loginreg.html" onsubmit="return loginFormFunc()">
+      <div class="form-group"> 
+        <label for="loginUsername" class="col-md-3 control-label">Username</label>
+        <div class="col-md-3">
+          <input id="loginUsername" placeholder="username" type="text" tabindex="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword" class="col-md-3 control-label">Password</label>
+        <div class="col-md-3">          
+          <input id="loginPassword" placeholder="password" type="password" tabindex="1">
+        </div>
+      </div>
+        <input type="submit" value="Login">
+    </form>
+
+  </div>
+ <div class="col-md-2">
+    
+ </div>
+  <div class="col-md-5">
+	  <h4>Create an account</h4>
+	  <br>
+    <form class="form-horizontal" name="registerForm" method="put" action="loginreg.html" onsubmit="return registerFormFunc()">
+      <div class="form-group"> 
+        <label for="regUsername" class="col-md-3 control-label">Username</label>
+        <div class="col-md-3">
+          <input id="regUsername" placeholder="username" type="text" tabindex="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="regPassword" class="col-md-3 control-label">Password</label>
+        <div class="col-md-3">          
+          <input id="regPassword" placeholder="password" type="password" tabindex="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="regPassword2" class="col-md-3 control-label">Confirm password</label>
+        <div class="col-md-3">          
+          <input id="regPassword2" placeholder="confirm password" type="password" tabindex="1">
+        </div>
+      </div>
+      <div class="form-group"> 
+        <label for="email" class="col-md-3 control-label">Email</label>
+        <div class="col-md-3">
+          <input id="email" placeholder="email" type="text" tabindex="1">
+        </div>
+      </div>      
+      <div class="form-group"> 
+        <label for="email2" class="col-md-3 control-label">Confirm email</label>
+        <div class="col-md-3">
+          <input id="email2" placeholder="confirm email" type="text" tabindex="1">
+        </div>
+      </div>      
+      
+        <input type="submit" value="Register">
+    </form>
+
+  </div>
+	      </div>
+		</div>
+</div>
+<br/>
+<!---->
+<div class="copywrite">
+	 <div class="container">
+		 <div class="copy">
+			 <p>© 2015 Lighting. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		 </div>
+		 <div class="clearfix"></div>
+	 </div>
+</div>
+<!---->
+</body>
+</html>

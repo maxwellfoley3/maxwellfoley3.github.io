@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Web - Processing.js Test</title>
+    <script src="processing-1.4.1.min.js"></script>
+</head>
+<body>
+   <h1>Processing.js Test</h1>
+   <p>This is my first Processing.js web-based sketch:</p>
+   <canvas style="border:1px solid #000000;" id="canvas1"></canvas>
+</body>
+    <script>
+        /*
+        var a =  0;
+
+
+         
+
+                
+        function sketchProc($p)
+        {
+            $p.draw = function()
+            {
+                
+                $p.colorMode($p.HSB,255);
+                $p.background(0);
+                var img1 =  noise($p.get(),.02,0,0,1,0);
+                $p.image(img1,0,0);
+             
+                var img2 =  $p.get();
+                img2 = newNoise(img2,img1,.01);
+                $p.image(img2,0,0);
+                a++;
+                
+            }
+            
+            $p.setup = function()
+            {
+                
+                $p.colorMode($p.RGB,255);
+                $p.size(600,600);
+                a=1;
+                
+            }
+            
+            $p.mousePressed = function()
+            {
+                alert("dild");
+                $p.noiseSeed($p.__int_cast($p.random(100000))); 
+            }
+            
+  //          $p.newNoise = function(img, img2, off)
+  //          {
+                var pixels =  bg.pixels.toArray().toArray();
+                img.pixels.toArray().set(pixels.toArray());
+             
+                var xoff =  0.0;
+             
+                for (var x =  0;  x < $p.width;  x++)
+                {
+                    var yoff =  0.0;
+             
+                    for (var y =  0;  y < $p.height;  y++)
+                    {
+                        img.pixels.setPixel(x+(y*$p.width), $p.color(0,0,$p.map(noise(xoff+1000 + (($p.mouseX*4)/$p.brightness(img2.pixels.getPixel(x+(y*$p.width)))),yoff+1000),0,1,0,255)));
+                        yoff += ($p.mouseY*.001)/$p.brightness(img2.pixels.getPixel(x+(y*$p.width)));
+                    }
+             
+                xoff += off;
+                }
+         
+                img.updatePixels();
+                return img;
+            }
+            
+            $p.noise = function(img, off, hue, saturation, brightness, alpha)
+           {
+                var pixels =  bg.pixels.toArray().toArray();
+                img.pixels.toArray().set(pixels.toArray());
+                var xoff =  0.0;
+                var xoff2 =  0.0;
+             
+                for (var x =  0;  x < $p.width;  x++)
+                {
+                    var yoff =  0.0;
+                    var yoff2 =  0.0;
+             
+                    for (var y =  0;  y < $p.height;  y++)
+                    {
+                        var h = 0,s = 0,b = 0,a = 0;
+                        if(hue!=0) h = $p.map(noise(xoff,yoff),0,1,0,255);
+                        else h = v1(img.pixels.getPixel(x+(y*$p.width)));
+             
+                        if(saturation!=0) s = $p.map(noise(xoff+1000,yoff+1000),0,1,0,255);
+                        else s = v2(img.pixels.getPixel(x+(y*$p.width)));
+             
+                        if(brightness!=0) b = $p.map(noise(xoff+2000,yoff+2000),0,1,0,255);
+                        else b = v3(img.pixels.getPixel(x+(y*$p.width)));
+             
+                        if(alpha!=0) a = $p.map(noise(xoff+3000,yoff+3000),0,1,0,255);
+                        else a = v4(img.pixels.getPixel(x+(y*$p.width)));
+             
+                        img.pixels.setPixel(x+(y*$p.width), $p.color(h,s,b,a));
+                        yoff += off;
+                    }
+                
+                xoff += off;
+            
+                }
+             
+                img.updatePixels();*/
+        //        return img;
+         //   }
+            /*
+            $p.v1 = v1;
+            $p.v2 = v2;
+            $p.v3 = v3;
+            $p.v4 = v4;
+*/
+   //     }
+
+    function sketchProc(processing)
+    {
+        // Override draw function, by default it will be called 60 times per second
+        processing.draw = function()
+        {
+            console.log("starting to draw " + processing.width + " " + processing.height);
+          // determine center and max clock arm length
+            var centerX = processing.width / 2, centerY = processing.height / 2;
+            var maxArmLength = Math.min(centerX, centerY);
+      
+            function drawArm(position, lengthScale, weight)
+            {
+                processing.strokeWeight(weight);
+                processing.line(centerX, centerY,
+                centerX + Math.sin(position * 2 * Math.PI) * lengthScale * maxArmLength,
+                centerY - Math.cos(position * 2 * Math.PI) * lengthScale * maxArmLength);
+            }
+     
+            processing.colorMode(processing.HSB,255);
+
+            function v1(c)
+            {
+                return (c >> 16) & 0xFF;
+            }
+            
+             
+            function v2(c)
+            {
+                return (c >> 8) & 0xFF;
+            }
+            
+             
+            function v3(c)
+            {
+                return c & 0xFF;
+            }
+             
+            function v4(c)
+            {
+                return (c >> 24) & 0xFF;
+            }
+                
+           function noise(img, off, hue, saturation, brightness, alpha)
+           {
+                img.pixels = processing.pixels;
+                var xoff =  0.0;
+                var xoff2 =  0.0;
+             
+                for (var x =  0;  x < processing.width;  x++)
+                {
+                    var yoff =  0.0;
+                    var yoff2 =  0.0;
+                    
+                    
+                    for (var y =  0;  y < processing.height;  y++)
+                    {
+                        var h = 0,s = 0,b = 0,a = 0;
+                        if(hue!=0) h = processing.map(processing.noise(xoff,yoff),0,1,0,255);
+                        else h = v1(img.pixels[x+(y*processing.width)]);
+                                     
+                        if(saturation!=0) s = processing.map(processing.noise(xoff+1000,yoff+1000),0,1,0,255);
+                        else s = v2(img.pixels[x+(y*processing.width)]);
+             
+                        if(brightness!=0) b = processing.map(processing.noise(xoff+2000,yoff+2000),0,1,0,255);
+                        else b = v3(img.pixels[x+(y*processing.width)]);
+             
+                        if(alpha!=0) a = processing.map(processing.noise(xoff+3000,yoff+3000),0,1,0,255);
+                        else a = v4(img.pixels[x+(y*processing.width)]);
+             
+                        img.pixels[x+(y*processing.width)] = processing.color(h,s,b,a);
+                        yoff += off;
+                    }
+                    
+                
+                    xoff += off;
+            
+                }
+                             
+                return img;
+            }           
+
+            processing.background(224);
+            
+            processing.loadPixels();
+            console.log(processing.pixels[304]);
+            var img = noise(processing.get(),.02,0,0,1,0)
+            console.log(img.pixels[304]);
+
+            processing.pixels = img.pixels;
+            console.log(processing.pixels[304]);
+            processing.pixels[1555] = processing.color(255,0,0);
+            processing.updatePixels();
+
+            processing.image(img,0,0);
+            // erase background
+        /*
+            var now = new Date();
+        
+            // Moving hours arm by small increments
+            var hoursPosition = (now.getHours() % 12 + now.getMinutes() / 60) / 12;
+            drawArm(hoursPosition, 0.5, 5);
+        
+            // Moving minutes arm by small increments
+            var minutesPosition = (now.getMinutes() + now.getSeconds() / 60) / 60;
+            drawArm(minutesPosition, 0.80, 3);
+        
+            // Moving hour arm by second increments
+            var secondsPosition = now.getSeconds() / 60;
+            drawArm(secondsPosition, 0.90, 1);*/
+        
+        };
+         
+    }
+        var canvas = document.getElementById("canvas1");
+        var processingInstance = new Processing(canvas, sketchProc);
+    </script>
+
+</html>
+
+

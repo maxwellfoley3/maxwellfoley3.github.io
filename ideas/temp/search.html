@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ideaWorld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="col-sm-8"><h1><a href="index.html">ideaworld</a></h1></div>
+  <div class="col-sm-2"><h4><a href="loginreg.html">Log In</h4></a></div>
+  <div class="col-sm-2"><h4><a href="loginreg.html">Register</h4></a></div>
+  <div class="col-sm-12">
+    <hr>
+      Search
+      <input type="text" class="text" value="Search for ideas">
+      <input type="submit" value="Submit">
+    <hr>
+  </div>
+  <div class="col-sm-4">
+    <h5>Categories</h5>
+    <ul>
+      <li>Art</li>
+      <li>Design</li>
+      <li>Engineering</li>
+      <li>Science</li>
+      <li>Technology</li>
+    </ul>
+    <h5>Difficulty rating</h5>
+      <div id="slider-range"></div>							
+      <input type="text" id="amount" style="border: 0; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
+      <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">  
+        <script type='text/javascript'>//<![CDATA[ 
+        $(window).load(function(){
+         $( "#slider-range" ).slider({
+                                range: true,
+                                min: 1,
+                                max: 5,
+                                values: [ 1, 5 ],
+                                slide: function( event, ui ) {  $( "#amount" ).val(ui.values[ 0 ] + ui.values[ 1 ] );
+                                }
+         });
+        $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + " - " + $( "#slider-range" ).slider( "values", 1 ) );
+
+        });//]]> 
+        </script>
+    <h5>Has suggested implementation</h5><input type="checkbox">
+    <br>
+    <br>
+    <input type="submit"></input>
+      
+
+
+  </div>
+  <div class="col-sm-8">
+    <h4>Search results</h4>
+    <div id="result">
+      <p><img width="200px" height="200px" src="img1.png" align="left"><h2><a href="idea.html">Idea number one</a></h2></p>
+      <p><span id="favorite">Click to favorite</span></p>
+      <span id="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
+      <p><span id="comments">X comments</span> | <span id="suggestedImplementation">Y suggested implementations</span></p>
+    </div>
+    <hr>
+    <div id="result">
+      <img width="200px" height="200px" src="img2.jpg" align="left"><h2>Idea number two </h2>
+      <p><span id="favorite">Click to favorite</span></p>
+      <span id="description">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</span>
+      <p><span id="comments">X comments</span> | <span id="suggestedImplementation">Y suggested implementations</span></p>
+    </div>
+    <hr>
+    <div id="result">
+      <img width="200px" height="200px" src="img3.png" align="left"><h2>Idea number three </h2>
+      <p><span id="favorite">Click to favorite</span></p>
+      <span id="description">"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</span>
+      <p><span id="comments">X comments</span> | <span id="suggestedImplementation">Y suggested implementations</span></p>
+
+    </div>
+  </div>
+    
+
+</div>
+
+</body>
+</html>

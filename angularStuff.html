@@ -1,0 +1,134 @@
+<html>
+    <body>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="jquery-3.1.0.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="angular.min.js"></script>
+
+        <script type="text/javascript">
+            angular.module('HelloWorldApp', []).controller('HelloWorldController', function($scope){
+               $scope.pieces = [
+                {title:"tomb of the first emporor of qin",period:"qin dynasty",country:"china",material:"terra cotta",image:"1.jpg"},
+                {title:"taotie mask",period:"western zhou dynasty",country:"china",material:"bronze",image:"2.jpg"},
+                {title:"tripod wine vessel with design of zoomorphic masks",period:"shang dynasty",country:"china",material:"bronze",image:"3.png"},
+                {title:"covered wine vessel with design of zoomorphic masks and animal headed handles",period:"western zhou dynasty",country:"china",material:"bronze",image:"4.jpg"},
+                {title:"preface to the orchard pavilion", artist:"wang xizhi", period:"eastern jin dynasty", material:"ink on paper", country:"china", image:"5.jpg"},
+                {title:"admonitions of the court instructress to palace ladies", artist:"gu kaizhi", period:"eastern jin dynasty", material:"ink on paper", country:"china",image:"6.jpg"},
+                {title:"ashokan pillar at topra", period:"mauryan dynasty", material:"sandstone", country:"india",image:"7.jpg"},
+                {title:"lion capital from ashokan column", period:"mauryan dynasty", material:"sandstone", country:"india",image:"8.jpg"},
+                {title:"great stupa at sanchi", period:"sunga",material:"stone",country:"india",image:"9.jpg"},
+                {title:"great departure from east gate of great stupa at sanchi", period:"sunga", material:"stone",country:"india",image:"10.jpg"},
+                {title:"gandharan-style standing shakyamuni", period:"kushan empire", material:"stone", country:"india",image:"11.jpg"},
+                {title:"guptan-style shakyamuni", period:"guptan empire", material:"stone", country:"india",image:"12.png"},
+                {title:"ajanta cave 10", period:"sunga period",country:"india",image:"13.jpg"},
+                {title:"avalokitesvara as padmapani", period:"guptan empire",country:"india",image:"14.jpg"},
+                {title:"dunhuang cave 254",period:"northern wei dynasty",country:"china",image:"15.png"},
+                {title:"colossal seated shakyamuni from yungang cave 20",period:"northern wei dynasty",country:"china",image:"16.png"},
+                {title:"binyang central cave with shakyamuni",period:"northern wei dynasty",country:"china",image:"17.png"},
+                {title:"i dont know this one"},
+                {title:"longmen caves at luoyang",period:"tang dynasty",country:"china",image:"18.png"},
+                {title:"mahavairocana",period:"tang dynasty",country:"china",image:"19.png"},
+                {title:"guardian figures",period:"tang dynasty",country:"china",image:"20.png"},
+                {title:"horyuji",material:"stone foundation and wooden building",period:"asuka period",country:"japan",image:"21.png"},
+                {title:"shaka triad",material:"bronze",period:"asuka period", country:"japan",image:"22.png"},
+                {title:"parinirvana from horyuji", period:"nara period", country:"japan",image:"23.png"},
+                {title:"daibutsu from todaji", period:"nara period", country:"japan",material:"bronze",image:"24.png"},
+                {title:"phoenix hall at byodo-in",period:"heian period",country:"japan",image:"25.png"},
+                {title:"amida",artist:"jocho",period:"heian period",country:"japan",material:"gilt wood",image:"26.png"},
+                {title:"muchaku and seshin", artist:"unkei", period:"kamakura period",country:"japan",material:"wood",image:"27.png"},
+                {title:"kashiwagi scene from tale of genji scroll", period:"heian period", material:"ink and color on paper", country:"japan",image:"28.png"},
+                {title:"minori scene from tale of genji scroll", period:"heian period", material:"ink and color on paper", country:"japan",image:"29.png"},
+                {title:"opening sequence from ban dainagon ekotobo",period:"heian period",material:"ink and color on paper",country:"japan",image:"30.png"},
+                {title:"the makato household from ban dainagon ekotoba",period:"heian period",material:"ink and color on paper",country:"japan",image:"31.png"},
+                {title:"the chase scene from choju giga",period:"heian period",material:"ink and color on paper",country:"japan",image:"32.jpg"},
+                {title:"frog priest from choju giga",period:"heian period",material:"ink and color on paper",country:"japan",image:"33.jpg"},
+                {title:"shiva as destroy of the three cities of the demons",period:"chola dynasty",material:"sandstone",country:"india",image:"34.png"},
+                {title:"shiva nataraja",period:"chola dynasty",material:"bronze",country:"india",image:"35.png"},
+                {title:"kandarya mahadeva temple",period:"chandella empire",material:"sandstone",country:"india",image:"36.png"},
+                {title:"seokguram",period:"untied silla kingdom",material:"sandstone",country:"india",image:"37.png"},
+                {title:"seated buddha",period:"saliendra dynasty",country:"indonesia",image:"38.png"},
+                {title:"borobudur",period:"saliendra dynasty",country:"indonesia",image:"39.jpg"},
+                {title:"angkor wat",period:"khmer empire",country:"cambodia",image:"40.jpg"},
+                {title:"churning the sea of milk",period:"khmer empire",country:"cambodia",image:"41.jpg"},
+                {title:"bayon temple",period:"khmer empire",country:"cambodia",image:"42.jpg"}
+               ];
+               $scope.originalLength = $scope.pieces.length;
+               $scope.current = $scope.pieces[0];
+               $scope.currentIndex= 0;
+               
+               $scope.next = function(){
+                   var a = Math.floor( Math.random()* $scope.pieces.length);
+                   $scope.current = $scope.pieces[a];
+                   $scope.currentIndex = a;
+                   $scope.phaseOne = false;
+               };
+               
+               $scope.submitGuess = function(){
+                    $scope.phaseOne = true;
+               }
+               
+               $scope.right = function(){
+                    $scope.pieces.splice($scope.currentIndex, 1);
+
+                   var a = Math.floor( Math.random()* $scope.pieces.length);
+                   $scope.current = $scope.pieces[a];
+                    $scope.currentIndex = a;
+                   $scope.phaseOne = false;
+               }
+
+               $scope.wrong = function(){
+                   var a = Math.floor( Math.random()* $scope.pieces.length);
+                   $scope.current = $scope.pieces[a];
+                    $scope.currentIndex = a;
+                   $scope.phaseOne = false;
+               }
+                              
+            });
+        
+        </script>
+        <div ng-app="HelloWorldApp" class="container">
+            <div ng-controller="HelloWorldController">
+
+                    <img ng-src="asian/{{current.image}}"><br>
+                    <br>
+                        
+                <form class="form-horizontal" role="form">
+                    <div class="form-group>    
+                        <label class="control-label col-sm-2" for="title">Title:</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="guess.title" class="form-control" id="title"/>
+                            </div>
+                    </div>
+                    <div ng-show="phaseOne">actual - {{current.title}}</div>
+                    <br>
+                    
+                    <div class="form-group>    
+                        <label for="artist">Artist:</label>
+                        <input type="text" ng-model="guess.artist" class="form-control" id="artist"/><br>
+                    </div>
+                    <div ng-show="phaseOne">actual - {{current.artist}}</div><br>
+                    <br>
+                    
+                    <br>
+                    <label for="country">Country:</label> <input type="text" ng-model="guess.country" class="form-control" id="country"/><br>
+                    <div ng-show="phaseOne">actual - {{current.country}}</div><br>
+    
+                    <br>
+                    <label for="period">Period:</label> <input type="text" ng-model="guess.period" class="form-control" id="period"/><br>
+                     <div ng-show="phaseOne">actual - {{current.period}}</div><br>
+                   
+                    <br>
+                    <label for="material">Material:</label> <input type="text" ng-model="guess.material" class="form-control" id="material"/><br>
+                     <div ng-show="phaseOne">actual - {{current.material}}</div><br>
+                        
+                    Say something:    <textarea rows="20" cols="50"></textarea>
+                    <br>
+                    <input type="submit" value="guess" ng-hide="phaseOne" ng-click="submitGuess()"><input type="Submit" value="right" ng-show="phaseOne" ng-click="right()"><input type="Submit" value="wrong" ng-show="phaseOne" ng-click="wrong()">
+                    <br>
+                    <br>
+                    {{pieces.length}} remaining out of {{originalLength}}
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

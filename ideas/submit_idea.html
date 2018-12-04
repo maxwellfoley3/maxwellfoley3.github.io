@@ -1,0 +1,262 @@
+  <!--A Design by W3layouts 
+  Author: W3layout
+  Author URL: http://w3layouts.com
+  License: Creative Commons Attribution 3.0 Unported
+  License URL: http://creativecommons.org/licenses/by/3.0/
+  -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <title>ideaWorld</title>
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+  <!-- Custom Theme files -->
+  <!--theme style-->
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+  <script src="js/jquery.min.js"></script>
+  
+  <!--//theme style-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Ideas" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <!-- start menu -->
+  <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+  <script type="text/javascript" src="js/memenu.js"></script>
+  <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+  <!-- /start menu -->
+  </head>
+  <body> 
+  <!--header-->	
+  <script src="js/responsiveslides.min.js"></script>
+  <script>  
+      $(function () {
+        $("#slider").responsiveSlides({
+          auto: true,
+          nav: true,
+          speed: 500,
+          namespace: "callbacks",
+          pager: false,
+        });
+      });
+    </script>
+    
+  <script type="text/javascript">
+  
+    // Original JavaScript code by Chirp Internet: www.chirp.com.au
+    // Please acknowledge use of this code by including this header.
+  
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 1 * 24 * 3600 * 1000); // plus 30 days
+  
+    function setCookie(name, value)
+    {
+      document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+    }
+ 
+  function storeValues(myForm)
+  {
+	var titleChk = document.myForm.title.value;
+    var contentChk = document.myForm.content.value;
+	
+    if (titleChk == null || titleChk == "") {
+        alert("Title must be filled out");
+        return false;
+    }
+    if (contentChk == null || contentChk == "") {
+        alert("Content must be filled out");
+        return false;
+    }	
+  	  setCookie("submittedIdea", "true");
+	  setCookie("category", myForm.category.value);
+	  setCookie("implementation", myForm.implementation.value);
+	  setCookie("content", myForm.content.value);
+	  setCookie("title", myForm.title.value);
+	  setCookie("difficulty", myForm.difficulty.value);
+      var image = document.getElementById('pImage').defaultValue = "./db_images/unknown_pic.png"
+	  setCookie("image", image.src);
+	  if (myForm.notshare.checked)
+       	setCookie("notshare", "true");
+	  else
+       	setCookie("notshare", "false");
+	  
+      alert("Your idea was sent successfully.\nThank you so much for your submission.");
+	  return true;
+  }
+  </script>
+    
+  <div class="header-top">
+       <div class="header-bottom">			
+                  <div class="logo">
+                      <h1><a href="index.html">ideaworld</a></h1>					
+                  </div>
+               <!---->		 
+               <div class="top-nav">
+                  <ul class="memenu skyblue"><li class="grid"><a href="index.html">Home</a></li>
+			  <li class="grid"><a href="product.html">See all ideas</a></li>
+                      <li class="active"><a href="submit_idea.html">Submit an Idea</a></li>
+                      <li class="grid"><a href="my_idea.html">My Submitted Ideas</a></li>					
+                  </ul>			
+               </div>
+                  <div class="cart box_1">
+                    <h2 class="b2">
+			    		  
+<script type="text/javascript">
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 1 * 24 * 3600 * 1000); // plus 30 days
+  
+    function setCookie(name, value)
+    {
+      document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+    }
+	
+	function getCookie(name)
+    {
+     var re = new RegExp(name + "=([^;]+)");
+     var value = re.exec(document.cookie);
+     return (value != null) ? unescape(value[1]) : null;
+    }
+
+	if(getCookie("loggedIn") == "true")
+	{
+		document.write("<a href=\"index.html?logout=true\"><span class=\"label label-primary\">Logout</span></a>");
+	}
+	else
+	{	
+		document.write("<a href=\"loginreg.html\"><span class=\"label label-primary\">Login</span></a>");
+		document.write("<a href=\"loginreg.html\"><span class=\"label label-primary\">Register</span></a></h2>	</div>");	
+	}			
+</script>
+			    
+               <div class="clearfix"> </div>
+               <!---->		 
+               </div>
+              <div class="clearfix"> </div>
+  </div>
+  <!---->	
+  <!---->
+  <script src="js/bootstrap.js"> </script>
+  <script type="text/javascript" src="js/defiant.js/src/defiant.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/string.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/ie.polyfill.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/json.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/json.search.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/json.toXML.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/json.mtrace.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/node.toJSON.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/node.select.js"></script>
+  <script type="text/javascript" src="js/defiant.js/src/node.serialize.js"></script>
+  <script type="text/javascript" src="data.js"></script>
+  
+  <!--header//-->
+  <div class="product-model">	 
+       <div class="container">
+              <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Submit an Idea</li>
+           </ol>
+              <h2>Submit an Idea</h2>			
+           <div class="col-md-9 product-model-sec">
+
+
+    <table id="submitForm" border="0" width ="300">
+    <form name="myForm" method="post" action="submit_idea.html" onsubmit="return storeValues(this);">
+    <tr>
+      <td height="43">Title</td>
+      <td><input style="width:400px;" type="text" class="text" name="title" value=""></td>
+    </tr>
+    <tr>
+      <td height="43"><p>Content</p></td>
+      <td><textarea style="height:200px;width:400px;" name="content" cols="40" rows="12" value=""></textarea></td>
+    </tr>
+    <tr>
+	    <td height="221">Suggested<br>Implementation<br>(optional)</td>
+      <td><textarea style="height:200px;width:400px;" name="implementation" cols="40" rows="12" value=""></textarea>
+    </tr>
+    <tr>
+      <td height="43">Project Image</td>
+      <td>
+
+      	      <img src="" id="pImage" alt="" value="./db_images/unknown_pic.png">
+	      <input style="width:400px;" type="file" class="text" name="image" value="./db_images/unknown_pic.png" accept="image/*" onchange="loadFile(event)">
+      </td>
+    </tr>
+    <tr>
+      <td height="21">Category</td>
+      <td>
+      <select style="width:400px;" name="category" value="Embedded Systems">
+      <option value="Embedded Systems">Embedded Systems</option>
+      <option value="Databases">Databases</option>
+      <option value="Machine Learning">Machine Learning</option>
+      <option value="Mobile App">Mobile App</option>
+      <option value="Website">Website</option>
+      <option value="Art">Art</option>
+      <option value="Research Paper">Research Paper</option>
+      <option value="Other">Other</option>    
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td height="40">Difficulty</td>
+      <td>
+      <select style="width:400px;" name="difficulty" value="1">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      </select>
+      </td>
+    </tr>
+    <tr height="60">
+      <td>Check if you do not want to share</td>
+      <td><input type="checkbox" name="notshare" /></td>
+    </tr>
+    <tr height="50">
+	    <script type="text/javascript">
+	    if(getCookie("loggedIn") == "true")
+{
+	document.write("<td>Submit</td><td><input type=\"submit\" value=\"Submit\"></td>");
+}
+	    </script>
+    </tr>
+  </form>
+  </table>
+
+
+            </div>
+	   
+	         <script type="text/javascript">
+	    if(getCookie("loggedIn") != "true")
+	    {
+		    document.write("<p style=\"color:red;\">You must <a href='loginreg.html'>login</a> before you are able to submit an idea</p>");
+		    document.getElementById("submitForm").style.display = "none";
+	    }
+
+   function loadFile(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('pImage');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+    
+    
+    </script> 
+               
+          </div>
+  </div>
+  <br/>
+  <!---->
+  <!---->
+  <div class="copywrite">
+       <div class="container">
+           <div class="copy">
+               <p>© 2015 Lighting. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+           </div>
+           <div class="clearfix"></div>
+       </div>
+  </div>
+  <!---->
+  </body>
+  </html>
