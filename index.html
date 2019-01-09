@@ -2,7 +2,9 @@
 <head>
     <title>Maxwell Foley </title>
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+
     <noscript>
             <link rel="stylesheet" type="text/css" href="noscriptstyle.css">
     </noscript>
@@ -26,7 +28,7 @@
         var displayedImage = 0;
 
         //list of all the sub-pages you can get to in box2
-        var pages = ["artwork", "cswork","resume"];
+        var pages = ["artwork", "cswork","resume","clients"];
 
         var box2Container = $('#box2container');
 
@@ -60,22 +62,26 @@
 
         //all of the art pieces
         var art = [
-            new piece("Luncheon on the grass", ["luncheon1.jpg", "luncheon2.jpg", "luncheon3.jpg"], 2015, "digital painting"),
-            new piece("Snakes", ["snakes.jpg"], 2015, "digital image"),
-            new piece("My best friend", ["my best friend.jpg"], 2015, "digital painting"),
+            new piece("Grotto", ["grotto.jpg"], 2016, "3d render"),
+            new piece("Fabric", ["fabric.jpg"], 2016, "digital painting"),
+            new piece("Jewel pool", ["jewel pool.jpg"], 2016, "digital painting"),
+            new piece("Space station", ["space station.jpg"], 2016, "3d render"),
+            new piece("Pets", ["pets.jpg"], 2016, "3d render"),
+            new piece("Luncheon on the grass", ["luncheon1.jpg", "luncheon2.jpg", "luncheon3.jpg"], 2016, "digital painting"),
+            new piece("Snakes", ["snakes.jpg"], 2016, "digital image"),
+            new piece("My best friend", ["my best friend.jpg"], 2016, "digital painting"),
 
-            new piece("Iceberg", ["iceberg.jpg"], 2015, "digital painting"),
+            new piece("Iceberg", ["iceberg.jpg"], 2016, "digital painting"),
 
-            new piece("Motivational speaker", ["be yourself.jpg"], 2015, "digital image"),
+            new piece("Motivational speaker", ["motivational speaker.jpg"], 2016, "digital image"),
 
-            new piece("Sea queen", ["sea queen.jpg"], 2015, "digital painting"),
+            new piece("Sea queen", ["sea queen.jpg"], 2016, "digital painting"),
             new piece("3 christs of ypsilanti", ["3 christs of ypsilanti.jpg"], 2015, "digital painting"),
             new piece("Crown of thorns", ["crown of thorns.jpg"], 2015, "digital painting"),
             new piece("Conflagration", ["conflagration.jpg"], 2015, "digital painting"),
             new piece("Apprentice magician", ["apprentice magician.jpg"], 2015, "digital painting"),
         //    new piece("Homonculus", ["homonculus.jpg"], 2015, "3D animation"),
             new piece("Mountain giant", ["mountain giant.jpg"], 2015, "digital painting"),
-            new piece("Face", ["face.jpg"], 2015, "digital painting"),
             new piece("Squirrel", ["squirrel.jpg"], 2015, "digital painting"),
             new piece("Monk", ["monk.jpg"], 2015, "digital painting"),
 						new piece("Self portrait 2", ["selfportrait2.jpg"], 2014, "digital collage"),
@@ -415,17 +421,93 @@
     <div id="websiteName">maxwellsfoley.com</div>
 
     <div id="box1">
-        <div id="bio">Maxwell Foley is a software developer, digital artist, and electronic musician.</div>
-        <div id="links" class="script"><ul><li><a href="#" onclick='displayBox2("artwork"); return false;'>artwork</a></li><li><a href="#" onclick='displayBox2("cswork"); return false;'>cs work</a></li><li><a href="#" onclick='displayBox2("resume"); return false;'>resume</a></li></ul></div>
-        <div id="links" class="no-script"><ul><li><a href="artwork.php">artwork</a></li><li><a href="cswork.php">cs work</a></li><li><a href="resume.php">resume</a></li></ul></div>
+            <p>
+                    Allow me to introduce myself - my name is <b>Maxwell Foley</b>, but you can call me <b>Max</b>.
+                </p>
+
+        <div id="links" class="script">
+            <ul>
+                <li><a href="#" onclick='displayBox2("clients"); return false;'>clients</a></li>
+                <li><a href="#" onclick='displayBox2("cswork"); return false;'>projects</a></li>
+                <li><a href="#" onclick='displayBox2("resume"); return false;'>resume</a></li>
+                <li><a href="#" onclick='displayBox2("artwork"); return false;'>artwork</a></li>
+            </ul>
+        </div>
+        <div id="links" class="no-script">
+            <ul>
+                <li><a href="artwork.php">artwork</a></li>
+                <li><a href="cswork.php">cs work</a></li>
+                <li><a href="resume.php">resume</a></li>
+            </ul>
+        </div>
 
 
         <div id="face"><img src="face.jpg"  alt="me"></div>
-
-        <div id="contact">Contact: maxwellsfoley@gmail.com, (614) 378-1741</div>
+        <div id="bio">
+                <p>
+                    I am a <b>full-stack software developer</b> specializing in writing complex web applications in <b>Node</b> and <b>React</b> 
+                    to fit the needs of my clients. Currently I am technical lead for <a href="http://artifaq.io">Artifaq.IO</a> 
+                    and operate as an independent contractor.
+                </p>
+                <p>
+                    Within the world of coding, my travels have also allowed me to dive into <b>graphics algorithms</b> and 
+                    <b>blockchain technology</b>, which I research and explore on the side.
+                </p>
+                <p>
+                    When I'm not working with code, I'm either making <b>digital art</b> in Photoshop and 3d rendering software,
+                     or using a beat-making program to write <b>electronic music</b>.
+                </p>
+                <p>
+                    If you are looking for someone of my skillset, feel free to <b>send me a message</b>. 
+                    I love to meet other tech lovers and work together or just chat.
+                </p>
+            </div>
+            <div id="contact"><b>maxwellsfoley@gmail.com</b></div>
+    
     </div>
 
     <div id="box2container" class="layoutA">
+
+        <div id="box2" class="clients">
+            <a href='#' onClick='hideBox2("clients"); return false;'><div class="xButton"></div></a>
+
+            <h1><a href="http://artifaq.io">Artifaq.IO</a></h1>
+            <img class="thumb" src="project-thumbs/artifaq1.png">
+            <p>
+                I am currently technical lead and responsible for the bulk of the development of Artifaq.IO, an
+                platform for art enthusiasts and curators alike, in MVP status as of January 2019. 
+            </p>
+            <p>
+                Originally titled Artstamp.IO, the software began its life as a blockchain app backed by an Ethereum 
+                smart contract in which users could upload art assets to the chain and buy, sell, and trade
+                those works. I was responsible for outlining this app's features and designing its architecture, 
+                as well as writing and implementing all the blockchain functionality. 
+            </p>
+            <img class="thumb" src="project-thumbs/artifaq2.png">
+
+            <p>
+                After the peak of the ICO bubble and increasing public skepticism towards blockchain platforms,
+                the team made a decision to shift focus and we are now solely an art platform designed to give   
+                "power to the people" by facilitating the discovery of under-explored works and breaking the 
+                hold of the existing gallery infrastructure on determining who gets seen. 
+            </p>
+            <img class="thumb" src="project-thumbs/artifaq3.png">
+
+            <p>
+                The software is written entirely in Javascript, with Node as the back-end, Mongo as the database,
+                Express for middleware, and a React front-end. 
+            </p>
+            <p>
+                Development of Artifaq.IO is funded by <a href="https://fabricatorz.org/">Fabricatorz Foundation</a>, whom I have worked for 
+                both as a full-time employee and independent contractor. 
+            </p>
+            <br>
+            <br>
+            <br>
+            <hr/>
+
+            <center><img src="underconstruction.gif"></center>
+        </div>
 
         <div id="box2" class="artwork">
              <a href='#' onClick='hideBox2("artwork"); return false;'><div class="xButton"></div></a>
@@ -438,87 +520,136 @@
 						 <p>Created an interactive art installation conceptualized and built in 48 hours for St. Louis's <a href="http://www.arthackday.net/events/eclipse-stlouis">Art Hack Day: Eclipse event</a>. The installation used a <a href="https://store.neurosky.com/pages/mindwave">NeuroSky MindWave Mobile</a> EEG-reading headset, which was connected to my laptop via bluetooth, which ran this code and then used a projector to display an image on the wall. The idea was for the art piece to serve as a sort of impressionistic visualizer of one's mental activity, specifically how calm and/or focused the person using the headset was. </p>
 						 <p>The project used node.js to communicate to the headset, and three.js to render the visuals in the browser.</p>
 						 	<p>A demo version where the user can use GUI sliders to simulate the EEG output is <a href="http://skwrk.com/arthack/demo.html">here</a>, and the full code of the project is <a href ="https://github.com/maxwellfoley/mind-toy-art-hack">available on GitHub</a>.</p>
-						 <h1>Parametrically rendered raymarching scenes</h1>
+                         <h1>Parametrically rendered raymarching scenes</h1>
+                         <img class="thumb" src="project-thumbs/glsl.png">
+
 						 	<p>Working on various rendered scenes built entirely in code using volumetric raymarching rendering technique via GLSL shader language, hosted on GLSLsandbox.com.</p>
 							<li><a href="http://glslsandbox.com/e#42142.12">Bubbles and clouds</a></li>
 							<li><a href="http://glslsandbox.com/e#42142.3">Chessboard scene</a></li>
              <a href="https://mighty-island-51217.herokuapp.com/"><h1>Quiz app</h1></a>
               <p>Flashcard quiz app using the MEAN stack. Users can create sets of flashcards, upload images, edit and delete flashcards, and then quiz themselves. Heroku was used to deploy the app and Bootstrap was used for CSS. Filepicker.js was used for file uploading. </p>
-             <a href="calendar/calendar2.html"><h1>Calendar</h1></a>
-                <p>Online calendar tool. Users can register and log into an account, and then add events to their personalized calendar. Users can make events public so that every calendar user can see the event. Users can also share events with other users, or send friend requests so that all of their events are automatically shared. The front end was built in Javascript and PHP with a functioning back end in SQL.</p>
              <h1>Generative art</h1>
+             <img class="thumb" src="project-thumbs/processing.png">
+
                 <p>Several interactive visuals initially built in Processing then ported into P5.js for online compatibility. Try clicking and moving the mouse around to see what happens. Warning: might be too intense for slower computers.</p>
                 <ul>
                     <li><h3><a href="sketch3.html">Pseudo-fractals</a></h3></li>
-                    <li><h3><a href="sketch2.html">Cyber rainbow cloud kingdom</a></h3></li>
+                    <li><h3><a href="sketch2.html">Cyber rainbow cloud kingdom</a> (shown above)</h3></li>
                     <li><h3><a href="sketch1.html">Gameboy goo</a></h3></li>
                 </ul>
 
              <h1>Twitter bots</h1>
-              <p><a href="https://twitter.com/pseudo_frac">@pseudo_frac is a a twitter bot</a> that will generate an image from the "pseudo-fractals" algorithm above and post it to Twitter once every 24 hours. Written in node.js and p5.js and deployed on Amazon EC2. I'm probably going to make a few more of these soon.</p>
-             <a href="artists.php"><h1>Artists Timeline</h1></a>
+             <img class="thumb" src="project-thumbs/pseudofrac.png">
+
+              <p><a href="https://twitter.com/pseudo_frac">@pseudo_frac is a now-defunct twitter bot</a> that for a period of time generated an image from the "pseudo-fractals" algorithm above and posted it to Twitter once every 24 hours. Written in node.js and p5.js and deployed on Amazon EC2.</p>
+             <a href="artists.html"><h1>Artists Timeline</h1></a>
                 <p>This was built for a project for an art class in which we were required to create a geneology of artists of the past five hundred years and find a way to visually integrate it with contemporary historical events. I developed a simple interactive page in JavaScript in which three sections of the website scroll simultaneously - a gallery of paintings, a timeline of historical events, and a horizontal timeline at the top simply for visual integration purposes. One can then click on a historic event to find the corresponding artist, or click on a handful of selected influences underneath each artist to jump to that point in the timeline. </p>
              <h1>skwrk.com</h1>
                 <p>The website you are currently reading was designed and coded by myself from scratch in HTML, CSS, and JavaScript. </p><br><br>
-             </h1><center><img src="underconstruction.gif"></center><br>
-             <p>More coming soon, I'm currently working on tweaking the projects I have done to a more professional standard for portfolio purposes.</p>
+             </h1><br>
         </div>
 
         <div id="box2" class = "resume">
              <a href='#' onClick='hideBox2("resume"); return false;'><div class="xButton"></div></a>
-
              <div id= "resumeBody">
-                 <h2>Maxwell S. Foley</h2>
-                 <hr>
-                 <h4>Experience</h4>
-                 <ul>
-                     <li>Attended the Columbus Academy from fall of 1999 to spring of 2012.</li>
-                         <ul>
-                             <li>Was the co-founder and Chief Justice of the political club</li>
-                             <li>Honorable Mention in the Scholastic Art and Writing awards</li>
-                         </ul>
-												 <!--
-                     <li>Attended the Rhode Island School of Design pre-college program as a painting major in the summer of 2012</li>
-                     <li>Attended the Putney School from fall of 2012 to spring of 2013.</li>
-                         <ul>
-                             <li>Chose to spend a year at an alternative high school in order to broaden my horizons and have new experiences</li>
-                         </ul>
-											 -->
-                     <li>Completed an undergraduate degree at Washington University in St. Louis in 2017</li>
-                         <ul>
-                             <li>Double major in studio art and computer science</li>
-                             <li>Active in KWUR student radio and the Zeta Beta Tau fraternity</li>
-                         </ul>
-                     <li>Worked as an intern at the Department of Biomedical Informatics at the Ohio State University College of Medicine in summer of 2014</li>
-                         <ul>
-                             <li>
-                                 Developed Java applet for analyzing miRNA data in cancer patients in order to determine which genes are linked with incidents of melanoma
-                             </li>
-                             <li>
-                                 Designed web-based portal for nurses to relay information to elderly patients
-                             </li>
-                         </ul>
-                     <li>Worked as a teaching assistant at St. Louis Chess Club and Scholastic Center in the summer of 2015</li>
-                    <li>Worked on a two-man team to develop an educational video game about the carbon cycle in Adobe Flash</li>
-                        <ul><li>The product was developed under a grant from the National Science Foundation and terrestrial ecologist Ann Elizabeth Russell of Iowa State University.</li></ul>
-                    <li>Was a Software Development intern at Less Annoying CRM in the summer of 2017, doing front-end web development in React</li>
-										<li>Was a Software Development Consultant at Syllogisteks starting in winter of 2017</li>
-											<ul><li>Did contract work for Reliv Inc. on a redesign project for the front-end and back-end of their website.</li></ul>
-
-                 </ul>
-                 <h4>Skills</h4>
-                 <ul>
-                     <li>Coding (Java, JavaScript, C++, and others)</li>
-                     <li>Web design and development (HTML, CSS, MySQL, PHP, JavaScript, Angular, React)</li>
-										 <li>Graphics (Shader programming, OpenGL)</li>
-										 <li>Game development (Unity)</li>
-										 <li>Graphic design and digital art: (Photoshop, inDesign, Illustrator, Processing)</li>
-                     <li>3D modeling (Blender, Cinema 4D, Maya, ZBrush)</li>
-										 <li>Audio recording and production (Abelton Live, Reason)</li>
-										 <li>Drawing, painting, working with wood and metal</li>
-                     <li>Writing</li>
-                 </ul>
+                <div style="text-align:center">
+                    <h1>Maxwell S. Foley</h1>
+                    4211 Swan Ave. | St. Louis, MO 63110 | (614) 378-1741<br/>
+                    maxwellsfoley@gmail.com
+                </div>
+                <hr>
+                <div style="text-align:center">
+                    <h3>Experience</h3>
+                </div>
+                <p>
+                    <b>Fabricatorz Foundation</b><br/>
+                    <i>Software Developer and Blockchain Engineer, Independent Contractor (April 2018 - present)</i>
+                    <ul>
+                        <li>
+                            Was project lead in charge of designing and developing Artstamp.IO, a full stack blockchain application using Ethereum smart contract code, React, Node, and Express
+                        </li>
+                        <li>
+                            Re-designed back-end architecture for openclipart.org, an image-sharing website written in PHP, to be modularized and portable using Docker               
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <b>Reliv International</b><br/>
+                    <i>Contractor (November 2017 - April 2018)</i>
+                    <ul>
+                        <li>
+                            Developed various aspects of a CMS application and a client-facing e-commerce website using PHP, Javascript, and React
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <b>Less Annoying CRM</b><br/>
+                    <i>Software Development Intern (May 2017 - August 2017)</i>
+                    <ul>
+                        <li>
+                            Worked on porting various aspects of client-facing application from PHP to a single-page application framework, and assisted in development of a REST API                        
+                        </li>
+                    </ul>
+                </p>       
+                <p>
+                    <b>Iowa State University</b><br/>
+                    <i>Independent Contractor (May 2015 - August 2015)</i>
+                    <ul>
+                        <li>
+                            Co-produced an educational video game in Adobe Flash under Prof. Ann Russell, Grant no. 0421178 by the National Science Foundation
+                        </li>
+                    </ul>
+                </p> 
+                <p>               
+                    <b>Ohio State University Department of Biomedical Informatics</b><br/>
+                    <i>Intern (May 2014 - August 2014)</i>
+                    <ul>
+                        <li>
+                             Developed Java applet for analyzing miRNA data in cancer patients in order to determine which genes are linked with incidents of melanoma
+                        </li>
+                        <li>
+                            Designed web-based portal for nurses to relay information to elderly patients
+                        </li>
+                    </ul>
+                </p>
+                <div style="text-align:center">
+                    <h3>Education</h3>
+                </div>
+                <p>               
+                   <b>Washington University in St. Louis</b>
+                   <i>B.F.A in Studio Art with second major in Computer Science (August 2013 - December 2017)</i>
+               </p>
+               <div style="text-align:center">
+                   <h3>Skills</h3>
+                </div>
+                  <ul>
+                    <li>
+                        Coding (Java, C++, and others)
+                    </li>
+                    <li>
+                        Web design and development (HTML, CSS, MySQL, PHP, JavaScript, React, Angular)
+                    </li>
+                    <li>
+                        Graphic algorithms (Shader programming, OpenGL)
+                    </li>
+                    <li>
+                        Graphic design and digital art: (Photoshop, inDesign, Illustrator, Processing)
+                    </li>
+                    <li>
+                        3D modeling (Blender, Cinema 4D, Maya, ZBrush)
+                    </li>
+                    <li>
+                        Audio recording and production (Abelton Live, Reason)
+                    </li>
+                    <li>
+                        Video editing and animation (Premiere, After Effects)
+                    </li>
+                </ul>
              </div>
+             <div style="text-align:center">
+                    <a href="resume.pdf">Download as PDF</a>
+                </div>
+    
 
 
         </div>

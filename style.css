@@ -1,11 +1,82 @@
-html {
-    height:100%;
-    /*width:100%;*/
-}
+html, body {margin:0;padding:0;height:100%;}
+
 body {
     background-color:#fff;
-    height:100%;
 }
+
+#myName {
+    width:100%;
+    height:100%;
+    position: absolute;
+    color:#ddd;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 135pt;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    text-shadow: 10px 10px #777;
+    z-index: -3;
+    overflow: hidden;
+}
+
+#myName #lastName {
+    position: absolute;
+    padding-left: 500px;
+    
+}
+
+#websiteName {
+    color:#222;
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 24pt;
+    text-transform: lowercase;
+    position: fixed;
+    bottom: 15px;
+    right: 25px;    
+}
+
+#websiteAcronym {
+    position: fixed;
+    bottom: -5px;
+    right: 5px;      
+    font-family: Courier, fixed-width;
+    font-size: 8pt;
+    color: #fff;
+    height: 30px;
+    margin: 10px;
+
+}
+
+#thumbnailHolder {
+    display:none;
+    width: 100px;
+    height: 100px;
+    border: 2px solid;
+    padding-left:3px;
+    padding-top:3px;
+    padding-right:3px; 
+    padding-bottom:3px;
+    position:absolute;
+    z-index:3;
+
+}
+
+#websiteAcronym:hover {
+    color: #000;
+}
+
+#box2::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+#box2::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
 
 /*screen is bigger than width of box1 and box2*/
 /*both boxes are fixed with, box2 is centered between box 1
@@ -42,10 +113,14 @@ body {
         text-align:center;
     }
     
-    /*box2 is a static size inside of its container*/
+    #box2.clients
+    {
+        width:95%;
+    }
+
     #box2.cswork
     {
-        width:350px;
+        width:95%;
     }
     
     #box2.cswork p
@@ -112,11 +187,22 @@ body {
         margin-right:25px;
         text-align:center;
     }
-    
+    #box2container.clients
+    {
+        width:95%;
+        min-width:200px;
+        position: relative;
+        float:left;
+        margin:25px;        
+    }
+       
     #box2container.cswork
     {
-        margin-left:500px;
-        
+        width:95%;
+        min-width:200px;
+        position: relative;
+        float:left;
+        margin:25px;        
     }
     
     /*liquid, fits inside its parent*/
@@ -189,10 +275,21 @@ body {
         margin-left:500px;
 
     }
+    #box2container.clients
+    {
+        width:90%;
+        min-width:200px;
+        position: relative;
+        float:left;
+        margin:25px;
+    }
     #box2container.cswork
     {
-        margin-left:500px;
-
+        width:90%;
+        min-width:200px;
+        position: relative;
+        float:left;
+        margin:25px;
     }
     #box2container.resume
     {
@@ -302,6 +399,14 @@ body {
         visibility:hidden;
     }
 
+    #websiteName 
+    {
+        display:block;
+        position:relative;
+        left:15px;
+        top:-4px;
+    }
+
 }
 @media screen and (max-width:400px) {
 
@@ -326,10 +431,14 @@ body {
     padding:15px;
     border: 3px solid #000000;
     background-color:#eee;
-    font-family: Courier, fixed-width;
-    font-size: 8pt;
+    font-family: 'Rubik', sans-serif;
+    font-weight:300;
+    font-size: 10pt;
 }
 
+#box1 #bio {
+    clear:both;
+}
 #box1 #links {
     float:right;
     width:250px;
@@ -353,6 +462,7 @@ body {
 
 
 #box1 #contact {
+    text-align:center;
     clear:both; 
 }
 
@@ -408,12 +518,21 @@ body {
     padding: 15px;
     border: 3px solid #000000;
     background-color:#eee;
-    font-family: Courier, fixed-width;
-    font-size: 8pt;
+    font-family: 'Rubik', sans-serif;
+    font-weight:300;
+    font-size: 10pt;
     text-align:left;
     display:none;
     overflow-y:scroll;
     
+}
+
+#box2 img.thumb {
+    border: 1px gray solid;
+    padding:5px;
+    max-height:150px;
+    margin:auto;
+    display:block;
 }
 
 #box2container {
@@ -423,7 +542,8 @@ body {
     padding: 15px;
     border: 3px solid #000000;
     background-color:#eee;
-    font-family: Courier, fixed-width;
+    font-family: 'Rubik', sans-serif;
+    font-weight:300;
     font-size: 8pt;
     text-align:left;
 }
@@ -433,9 +553,19 @@ body {
     background-color:#fff;
     padding:10px;
     overflow:scroll;
-    font-family: Helvetica, sans-serif;
-    font-size: 8pt;    
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    font-size: 10pt;    
     
+}
+
+#box2 #resumeBody h1 {
+    font-size: 24pt;
+    margin-block-end:4pt;
+}
+
+#box2 #resumeBody h3 {
+    font-size: 14pt;
+    text-decoration:underline;
 }
 
 #box3container {
@@ -449,8 +579,9 @@ body {
     padding: 15px;
     border: 3px solid #000000;
     background-color:#eee;
-    font-family: Courier, fixed-width;
-    font-size: 8pt;
+    font-family: 'Rubik', sans-serif;
+    font-weight:300;
+    font-size: 10pt;
     margin-bottom: 50px;
     max-height:600px;
     /*display:none;*/
@@ -560,77 +691,5 @@ body {
     background-image: url(xbuttondark.gif);
 }
 
-#myName {
-    width:100%;
-    height:100%;
-    position: absolute;
-    color:#ddd;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 135pt;
-    text-transform: uppercase;
-    letter-spacing: 20px;
-    text-shadow: 10px 10px #777;
-    z-index: -3;
-    overflow: hidden;
-}
-
-#myName #lastName {
-    position: absolute;
-    padding-left: 500px;
-    
-}
-
-#websiteName {
-    color:#222;
-    font-family: "Times New Roman", serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 24pt;
-    text-transform: lowercase;
-    position: fixed;
-    bottom: 15px;
-    right: 25px;    
-}
-
-#websiteAcronym {
-    position: fixed;
-    bottom: -5px;
-    right: 5px;      
-    font-family: Courier, fixed-width;
-    font-size: 8pt;
-    color: #fff;
-    height: 30px;
-    margin: 10px;
-
-}
-
-#thumbnailHolder {
-    display:none;
-    width: 100px;
-    height: 100px;
-    border: 2px solid;
-    padding-left:3px;
-    padding-top:3px;
-    padding-right:3px; 
-    padding-bottom:3px;
-    position:absolute;
-    z-index:3;
-
-}
-
-#websiteAcronym:hover {
-    color: #000;
-}
-
-#box2::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
-}
-#box2::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
 
 
