@@ -1,0 +1,414 @@
+<title>Maxwell Foley | Art Hack Day</title>
+<head>
+<script src="dat.gui.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="three.min.js"></script>
+
+<body>
+</body>
+
+
+<script>
+
+var eegData = {eSense:{attention:0.0,meditation:0.0}};
+
+
+</script>
+
+
+<script type="x-shader/x-vertex" id="vertexShader">
+varying vec2 vUv;
+varying vec4 myPosition;
+
+void main() {
+
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    myPosition = gl_Position;
+
+}
+</script>
+
+<script type="x-shader/x-fragment" id="blueShader">
+varying vec2 vUv;
+varying vec4 myPosition;
+
+uniform float time;
+uniform vec2 resolution;
+
+uniform float attention;
+uniform float meditation;
+
+uniform float attentionLong;
+uniform float meditationLong;
+
+float expStep( float x, float k, float n ){
+    return exp( -k*pow(x,n) );
+}
+
+float cubicPulse( float c, float w, float x ){
+    x = abs(x - c);
+    if( x>w ) return 0.0;
+    x /= w;
+    return 1.0 - x*x*(3.0-2.0*x);
+}
+
+float rand(float x)
+{
+	return fract(sin(x)*109965.0);
+}
+float noise(float x)
+{
+	float i = floor(x);  // integer
+	float f = fract(x);  // fraction
+	return 2.* mix(rand(i), rand(i + 1.0), smoothstep(0.,1.,f)) - 1.;	
+	
+}
+
+float circle(vec2 p,vec2 c,float r,float soft){
+	vec2 dist = p-c;
+	return smoothstep(r-(r*soft),r+(r*soft),dot(dist,dist)*4.0);
+}
+
+
+float gain(float x, float k) 
+{
+	float a = 0.5*pow(2.0*((x<0.5)?x:1.0-x), k);
+	return (x<0.5)?a:1.0-a;
+}
+
+void main() {
+
+	vec2 position = myPosition.xy;
+	position = 2.5*(position * resolution.xy / max(resolution.x, resolution.y));
+
+	float myTime = time / 100.0;
+	float myAttentionLong =  attentionLong/100.0;
+	float myMeditationLong =  meditationLong/100.0;
+
+	if(length(position-vec2(0.))>1.)
+	{
+		 gl_FragColor =vec4(  vec3( gain(1.-  smoothstep(length(position-vec2(0.)), 1.,1.05 +sin(myTime)*(.025) + pow(myMeditationLong,15.)/5.),.8)),1. ); 
+		 return;
+	}
+	
+	float wander = expStep(myAttentionLong,3.,1.);//.01;
+	float size = .001 * expStep(myMeditationLong,3.,1.);
+	float softness = 50.;
+	float sizeVariance = (100.-meditation)/2.1;
+	//first ring
+	float dirtyLayer = circle(position,vec2(noise(myTime)*wander + .2, noise(myTime*.4+10230.)*wander),size,softness + sizeVariance*noise(myTime*4.+885573.));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*4.+75573.)*wander + .173, noise(myTime*.3+7658.)*wander + .1),size,softness + sizeVariance*noise(myTime*4.+7573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.+234235.)*wander + .1, noise(myTime*.5+43433.)*wander + .173),size,softness + sizeVariance*noise(myTime*4.+752343.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+32322.)*wander, noise(myTime*4.+42442.)*wander + .2),size,softness + sizeVariance*noise(myTime*4.+8573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.2+32234.)*wander + -.1, noise(myTime*.6+344499.)*wander + .173),size,softness + sizeVariance*noise(myTime*4.+455573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*2.+342.)*wander + -.173, noise(myTime*1.5+4340.)*wander + .1),size,softness + sizeVariance*noise(myTime*4.+65573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+23333.)*wander + -.2, noise(myTime*.8+35094.)*wander ),size,softness + sizeVariance*noise(myTime*4.+645573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+32355.)*wander + -.173, noise(myTime*4.+35994.)*wander - .1),size,softness + sizeVariance*noise(myTime*4.+23573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+887654.)*wander + -.1, noise(myTime*1.5+3435.)*wander - .173),size,softness + sizeVariance*noise(myTime*4.+65573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+667788.)*wander , noise(myTime*1.2+403904.)*wander - .2),size,softness + sizeVariance*noise(myTime*4.+3573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.5+434566.)*wander + .1, noise(myTime*2.5+348894.)*wander -.173 ),size,softness + sizeVariance*noise(myTime*4.+525573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+55355.)*wander + .173, noise(myTime*3.5+489943.)*wander -.1 ),size,softness + sizeVariance*noise(myTime*4.+325573.)));
+		
+		//second ring
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+55355.)*wander + .35, noise(myTime*3.5+489943.)*wander ),size,softness + sizeVariance*noise(myTime*4.+723473.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*2.+342.)*wander + .323, noise(myTime*1.5+4340.)*wander + .133),size,softness + sizeVariance*noise(myTime*4.+55573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+23333.)*wander + .247, noise(myTime*.8+35094.)*wander +.247),size,softness + sizeVariance*noise(myTime*4.+435573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+32355.)*wander + .133, noise(myTime*4.+35994.)*wander + .323),size,softness + sizeVariance*noise(myTime*4.+455573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+887654.)*wander + 0., noise(myTime*1.5+3435.)*wander + .35),size,softness + sizeVariance*noise(myTime*4.+165573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+667788.)*wander - .133, noise(myTime*1.2+403904.)*wander + .323),size,softness + sizeVariance*noise(myTime*4.+1175573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.5+4343446.)*wander - .247, noise(myTime*2.5+348894.)*wander + .247 ),size,softness + sizeVariance*noise(myTime*4.+75573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+553455.)*wander - .323, noise(myTime*3.5+489943.)*wander +.133 ),size,softness + sizeVariance*noise(myTime*4.+71235573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+225333.)*wander - .35, noise(myTime*.8+35234.)*wander +.0),size,softness + sizeVariance*noise(myTime*4.+54573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+32355.)*wander - .323, noise(myTime*4.+85994.)*wander - .133),size,softness + sizeVariance*noise(myTime*4.+365573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+887344.)*wander - .247, noise(myTime*1.5+3435.)*wander - .247),size,softness + sizeVariance*noise(myTime*4.+8573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+6342788.)*wander - .133, noise(myTime*1.2+234904.)*wander - .323),size,softness + sizeVariance*noise(myTime*4.+75973.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.5+534566.)*wander - .0, noise(myTime*2.5+33494.)*wander - .35 ),size,softness + sizeVariance*noise(myTime*4.+778573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+65355.)*wander + .133, noise(myTime*3.5+342943.)*wander -.323 ),size,softness + sizeVariance*noise(myTime*4.+7573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+75855.)*wander + .247, noise(myTime*3.5+234943.)*wander -.247),size,softness + sizeVariance*noise(myTime*4.+99573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+6355.)*wander + .323, noise(myTime*3.5+423443.)*wander -.133 ),size,softness + sizeVariance*noise(myTime*4.+79573.)));
+	
+	//third ring
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+55355.)*wander + .5, noise(myTime*3.5+489943.)*wander ),size,softness + sizeVariance*noise(myTime*4.+75123573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*2.+342.)*wander + .48, noise(myTime*1.5+4340.)*wander + .129),size,softness + sizeVariance*noise(myTime*4.+7115573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+23333.)*wander + .433, noise(myTime*.8+35094.)*wander +.25),size,softness + sizeVariance*noise(myTime*4.+9073.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+32355.)*wander + .35, noise(myTime*4.+35994.)*wander + .35),size,softness + sizeVariance*noise(myTime*4.+98573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+887654.)*wander + .25, noise(myTime*1.5+3435.)*wander + .433),size,softness + sizeVariance*noise(myTime*4.+88573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+667788.)*wander + .129, noise(myTime*1.2+403904.)*wander + .48),size,softness + sizeVariance*noise(myTime*4.+75573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.5+4343446.)*wander + .0, noise(myTime*2.5+348894.)*wander + .5 ),size,softness + sizeVariance*noise(myTime*4.+75573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+553455.)*wander - .129, noise(myTime*3.5+489943.)*wander + .48 ),size,softness + sizeVariance*noise(myTime*4.+75573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+225333.)*wander - .25, noise(myTime*.8+35234.)*wander + .433),size,softness + sizeVariance*noise(myTime*4.+15573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+32355.)*wander - .35, noise(myTime*4.+85994.)*wander + .35),size,softness + sizeVariance*noise(myTime*4.+71115573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+887344.)*wander - .433, noise(myTime*1.5+3435.)*wander + .25),size,softness + sizeVariance*noise(myTime*4.+71235573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+63788.)*wander - .48, noise(myTime*1.2+234904.)*wander + .129),size,softness + sizeVariance*noise(myTime*4.+7415573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.5+5566.)*wander - .5, noise(myTime*2.5+33494.)*wander + .0 ),size,softness + sizeVariance*noise(myTime*4.+42375573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*2.+434542.)*wander - .48, noise(myTime*1.5+4340.)*wander - .129),size,softness + sizeVariance*noise(myTime*4.+12375573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+13333.)*wander - .433, noise(myTime*.8+3094.)*wander -.25),size,softness + sizeVariance*noise(myTime*4.+1275573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+52355.)*wander - .35, noise(myTime*4.+3594.)*wander - .35),size,softness + sizeVariance*noise(myTime*4.+3375573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+487654.)*wander - .25, noise(myTime*1.5+335.)*wander - .433),size,softness + sizeVariance*noise(myTime*4.+7335573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+567788.)*wander - .129, noise(myTime*1.2+4904.)*wander - .48),size,softness + sizeVariance*noise(myTime*4.+753455573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*.5+43446.)*wander - .0, noise(myTime*2.5+3494.)*wander - .5 ),size,softness + sizeVariance*noise(myTime*4.+75573453.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+553455.)*wander + .129, noise(myTime*3.5+48943.)*wander - .48 ),size,softness + sizeVariance*noise(myTime*4.+754573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.1+225333.)*wander + .25, noise(myTime*.8+3534.)*wander - .433),size,softness + sizeVariance*noise(myTime*4.+34553.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.4+325.)*wander + .35, noise(myTime*4.+994.)*wander - .35),size,softness + sizeVariance*noise(myTime*4.+753.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*3.2+8844.)*wander + .433, noise(myTime*1.5+435.)*wander - .25),size,softness + sizeVariance*noise(myTime*4.+7573.)));
+	dirtyLayer = min(dirtyLayer, 
+		circle(position,vec2(noise(myTime*1.5+634288.)*wander + .48, noise(myTime*1.2+24904.)*wander - .129),size,softness + sizeVariance*noise(myTime*4.+75573.)));
+	
+	//dirtyLayer = min(dirtyLayer,myAttentionLong);
+	vec4 dirtyLayerCol = vec4(dirtyLayer*myAttentionLong+.1+sin(myTime)*clamp(myAttentionLong,0.,.1),myMeditationLong/6.+cos(myTime*2.43)*clamp(myAttentionLong,0.,.1)/3.,1.-(dirtyLayer),1.);
+	
+	float param = mod(length(position-vec2(sin(myTime)*(1.-myAttentionLong),cos(myTime)*(1.-myAttentionLong)))-myTime, 2.);
+	float cleanLayer = cubicPulse(0.5,0.2,1.-param);
+	vec4 cleanLayerCol = vec4(vec3(cleanLayer),1.);
+	
+	float param2 = mod(length(position-vec2(cos(myTime)*(1.-myAttentionLong),sin(myTime)*(1.-myAttentionLong)))-myTime, mod(myTime,1.));
+	float extremeLayer = cubicPulse(0.5,0.2,1.-param2);
+  cleanLayerCol = mix(cleanLayerCol,vec4(vec3(extremeLayer),1.),pow(myMeditationLong,30.));
+	
+	gl_FragColor = mix(dirtyLayerCol,cleanLayerCol,pow(myMeditationLong,4.));
+	
+
+}
+	
+</script>
+
+
+
+<script>
+// <![CDATA[
+// Our 3D code will go here...
+// Set up the scene, camera, and renderer as global variables.
+var scene, camera, renderer, clock;
+var startTime = Date.now();
+
+var mouse = new THREE.Vector2();
+
+var initialZoom;
+
+var bufferScene; //= new THREE.Scene();
+var bufferTextureA;
+var bufferTextureB;
+var effectController = {
+    attention: 0,
+    meditation: 0
+};
+var uniforms = 	{time: {type:"f", value: 1.0 },
+								 resolution: {type:"v2", value: new THREE.Vector2(window.innerWidth, window.innerHeight)}, 
+								 attention: {type:"f", value: 0.0 },
+								 meditation: {type:"f", value: 0.0 },
+								 
+								 attentionLong: {type:"f", value: 0.0 },
+								 meditationLong: {type:"f", value: 0.0 },
+
+								 delta: {type:"f", value: 5000.0 },
+								 theta: {type:"f", value: 5000.0 },
+								 lowAlpha: {type:"f", value: 5000.0 },
+								 highAlpha: {type:"f", value: 5000.0 },
+								 lowBeta: {type:"f", value: 5000.0 },
+								 lowGamma: {type:"f", value: 5000.0 },
+								 highGamma: {type:"f", value: 5000.0 }
+								};
+var counter = 1.0;
+
+var group;
+
+var mouseDown= false;
+
+var planeMesh2;
+
+init();
+animate();
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+// Globals from the previous step go here...
+
+// Sets up the scene.
+function init() {
+    var gui = new dat.GUI();
+
+	gui.add( effectController, "attention", 0.0, 100.0 ).onChange( function ( value ) {
+		eegData.eSense.attention = value;
+	});
+	gui.add( effectController, "meditation", 0.0, 100.0 ).onChange( function ( value ) {
+		eegData.eSense.meditation = value;
+    });
+    
+  // Create the scene and set the scene size.
+  scene = new THREE.Scene();
+  var WIDTH = window.innerWidth,
+      HEIGHT = window.innerHeight;
+
+  var ambient = new THREE.AmbientLight( 0xffffff, 200. );
+
+  // Create a renderer and add it to the DOM.
+  renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setSize(WIDTH, HEIGHT);
+  //renderer.shadowMap.enabled = true;
+  //renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  scene.background = new THREE.Color( 0xff0000 );
+
+  renderer.gammaInput = true;
+  renderer.gammaOutput = true;
+
+  document.body.appendChild(renderer.domElement);
+
+
+    // Set the background color of the scene.
+  renderer.setClearColor(0x000000, 1);
+
+  // Create a camera, zoom it out from the model a bit, and add it to the scene.
+  var border = 0;
+  camera = new THREE.OrthographicCamera( WIDTH / - 2 - border, WIDTH / 2 + border, HEIGHT / 2 + border, HEIGHT / - 2 - border, -4000, 4000 );
+  scene.add(camera);
+
+  initialZoom=camera.zoom;
+
+  scene.add(new THREE.AmbientLight(0xffff00));
+
+
+  // Create an event listener that resizes the renderer with the browser window.
+  window.addEventListener('resize', function() {
+    var WIDTH = window.innerWidth,
+        HEIGHT = window.innerHeight;
+    renderer.setSize(WIDTH, HEIGHT);
+    camera.aspect = WIDTH / HEIGHT;
+    camera.updateProjectionMatrix();
+  });
+
+
+
+
+  var material = new THREE.ShaderMaterial( {
+    uniforms: uniforms,
+    vertexShader: document.getElementById( 'vertexShader' ).textContent,
+    fragmentShader: document.getElementById( 'blueShader' ).textContent
+    }
+  );
+
+  material.side = THREE.DoubleSide;
+
+
+  var planeMesh = new THREE.Mesh(
+    new THREE.PlaneGeometry( window.innerWidth, window.innerHeight ),
+    material);
+
+    scene.add(planeMesh);
+
+
+ camera.position.set( 0, 0, -120 );
+
+
+
+
+}
+function animate() {
+
+
+  // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+  requestAnimationFrame(animate);
+  counter++;
+  uniforms.time.value = counter;
+	uniforms.resolution.value = new THREE.Vector2(window.innerWidth,window.innerHeight);
+	if(eegData)
+	{
+		console.log("eegdata",eegData);
+		console.log("eegdata.eSense",eegData['eSense']);
+
+		if(eegData.eSense)
+		{
+			uniforms.attention.value = eegData.eSense.attention;
+			uniforms.meditation.value = eegData.eSense.meditation;
+		
+		
+			uniforms.attentionLong.value = uniforms.attentionLong.value + (eegData.eSense.attention-uniforms.attentionLong.value)/100;
+			uniforms.attentionLong.value = clamp(uniforms.attentionLong.value,0,100);
+			$("#attentionLong").text( JSON.stringify(uniforms.attentionLong.value) );
+
+			uniforms.meditationLong.value = uniforms.meditationLong.value + (eegData.eSense.meditation-uniforms.meditationLong.value)/100;
+			uniforms.meditationLong.value = clamp(uniforms.meditationLong.value,0,100);
+			$("#meditationLong").text( JSON.stringify(uniforms.meditationLong.value) );
+
+		}
+		if(eegData.eegPower)
+		{
+			uniforms.delta.value = eegData.eegPower.delta;
+			uniforms.theta.value = eegData.eegPower.theta;
+			uniforms.lowAlpha.value = eegData.eegPower.lowAlpha;
+			uniforms.highAlpha.value = eegData.eegPower.highAlpha;
+			uniforms.lowBeta.value = eegData.eegPower.lowBeta;
+			uniforms.lowGamma.value = eegData.eegPower.lowGamma;
+			uniforms.highGamma.value = eegData.eegPower.highGamma;
+		}
+	}
+  // Render the scene.
+  render();
+
+
+}
+
+function render() {
+  renderer.render( scene, camera );
+}
+
+
+
+// ]]>
+</script>
+
+
