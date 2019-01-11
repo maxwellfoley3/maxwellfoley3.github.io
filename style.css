@@ -123,10 +123,7 @@ body {
         width:95%;
     }
     
-    #box2.cswork p
-    {
-        text-indent: 30px;
-    }
+
     
     #box2.cswork h1
     {
@@ -434,6 +431,7 @@ body {
     font-family: 'Rubik', sans-serif;
     font-weight:300;
     font-size: 10pt;
+    margin-bottom:10px;
 }
 
 #box1 #bio {
@@ -524,7 +522,10 @@ body {
     text-align:left;
     display:none;
     overflow-y:scroll;
-    
+    /*fixes weird bug where sometimes this gets set to 656px and im not sure why*/
+    height:auto !important;
+    margin-top:10px;
+    margin-bottom:10px;
 }
 
 #box2 img.thumb {
@@ -533,6 +534,12 @@ body {
     max-height:150px;
     margin:auto;
     display:block;
+}
+#box2 p {
+    text-indent: 10px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #box2container {
@@ -552,7 +559,8 @@ body {
 #box2 #resumeBody {
     background-color:#fff;
     padding:10px;
-    overflow:scroll;
+    overflow:hidden;
+    margin-bottom:10px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
     font-size: 10pt;    
     

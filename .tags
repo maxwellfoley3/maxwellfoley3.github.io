@@ -5,9 +5,13 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 '+a.decade+'	artists.html	/^                html+= '<a name="'+a.decade+'"><div class="artistheading"><span class="decade ' + a.decade+ '">' + a.decade + 's<\/span><\/a>';$/;"	a
+animate	arthack/demo.html	/^function animate() {$/;"	f
+animate	arthack/index.html	/^function animate() {$/;"	f
 artist	artists.html	/^        function artist(name, decade,title,influences) {$/;"	f
 changeBox2Height	index.html	/^        function changeBox2Height()$/;"	f
 changeBox2Height	index2.php	/^        function changeBox2Height()$/;"	f
+clamp	arthack/demo.html	/^function clamp(value, min, max) {$/;"	f
+clamp	arthack/index.html	/^function clamp(value, min, max) {$/;"	f
 closeArtworkList	art/index2.php	/^        function closeArtworkList() {$/;"	f
 closeImgViewer	art/index2.php	/^        function closeImgViewer() {$/;"	f
 createTimeline	artists.html	/^        function createTimeline()$/;"	f
@@ -26,6 +30,7 @@ doPreload	index.html	/^        function doPreload()$/;"	f
 doPreload	index2.php	/^        function doPreload()$/;"	f
 drawArm	processing.html	/^            function drawArm(position, lengthScale, weight)$/;"	f
 event	artists.html	/^        function event(decade,year,name) {$/;"	f
+getEegData	arthack/index.html	/^function getEegData()$/;"	f
 hideBox2	index.html	/^        function hideBox2(page) {$/;"	f
 hideBox2	index2.php	/^        function hideBox2(page) {$/;"	f
 hideBox3	index.html	/^        function hideBox3()$/;"	f
@@ -36,6 +41,8 @@ hsvToRgb	artists.html	/^        function hsvToRgb(h, s, v) {$/;"	f
 img.onload	art/index2.php	/^            img.onload = function () {img.style.visibility = "visible";}$/;"	j
 img.onload	index2.php	/^            img.onload = function () {img.style.visibility = "visible";}$/;"	j
 in	index2.php	/^                <p>This was built for a project for an art class in which we were required to create a geneology of artists of the past five hundred years and find a way to visually integrate it with contemporary historical events. I developed a simple interactive page in JavaScript in which three sections of the website scroll simultaneously - a gallery of paintings, a timeline of historical events, and a horizontal timeline at the top simply for visual integration purposes. One can then click on a historic event to find the corresponding artist, or click on a handful of selected influences underneath each artist to jump to that point in the timeline. <\/p>$/;"	c
+init	arthack/demo.html	/^function init() {$/;"	f
+init	arthack/index.html	/^function init() {$/;"	f
 is	art/index2.php	/^        \/\/this function is in charge of displaying the widget you use to scroll back and forth between multiple images for one piece$/;"	f
 is	index2.php	/^            \/\/box2containers class is unknown$/;"	c
 is	index2.php	/^        \/\/this function is in charge of displaying the widget you use to scroll back and forth between multiple images for one piece$/;"	f
@@ -57,6 +64,8 @@ prevImg	art/index2.php	/^        function prevImg()$/;"	f
 prevImg	index.html	/^        function prevImg()$/;"	f
 prevImg	index2.php	/^        function prevImg()$/;"	f
 processor	processing2.html	/^function processor(pjs)$/;"	f
+render	arthack/demo.html	/^function render() {$/;"	f
+render	arthack/index.html	/^function render() {$/;"	f
 rightArrowHover	art/index2.php	/^        function rightArrowHover()$/;"	f
 scrollMe	artists.html	/^        function scrollMe()$/;"	f
 sketchProc	processing.html	/^        function sketchProc($p)$/;"	f
