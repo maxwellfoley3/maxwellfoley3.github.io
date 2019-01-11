@@ -566,6 +566,12 @@ body {
     
 }
 
+#box2 #resumeBody p {
+    text-indent:0px;
+    width:100%;
+    max-width:9999px;
+}
+
 #box2 #resumeBody h1 {
     font-size: 24pt;
     margin-block-end:4pt;
