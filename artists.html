@@ -245,7 +245,7 @@
         {
             for(var i = 0; i < events.length; i++)
             {
-                            var html = document.getElementById("right").innerHTML;
+                            var html = document.getElementById("right-inner").innerHTML;
 
                 html+='<div class="eventbox"><a href="#'+events[i].decade+'">';
                 if (events[i].year != 0) {
@@ -254,7 +254,7 @@
 
                 }
                 html+='</a></div>';
-                            document.getElementById("right").innerHTML = html;
+                            document.getElementById("right-inner").innerHTML = html;
                 if (events[i].year != 0) {
 
                                 document.getElementsByClassName("eventyear " + i)[0].style.color = colors[i];
@@ -349,13 +349,13 @@
         <div id="container">
             <div id="header">
                 500 years of painting
+                <div id="andOneEngraving">(AND ONE ENGRAVING)</div>
             </div>
             <div id="timeline">
                 <div id="timelineInner">                </div>
 
                 <div id="timelineLine"></div>
                 <!--<canvas id="timelineCanvas" width="5000" height="90" style="border:1px solid #000000;"> </canvas>-->
-                                        <div id="andOneEngraving">(AND ONE ENGRAVING)</div>
 
             </div>
 
@@ -364,10 +364,9 @@
  
             </div>
             <div id = "right">
+                <div id = "right-inner">
 
-                   
-                
-                
+                </div>
             </div>
         
         </div>
