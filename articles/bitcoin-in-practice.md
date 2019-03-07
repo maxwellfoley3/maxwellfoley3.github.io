@@ -1,4 +1,4 @@
-* 4. Using Bitcoin in practice
+# 4. Using Bitcoin in practice
 
 We have talked a lot about the Bitcoin software and its users and so on, but it has all been totally hypothetical and removed from the real world. Let's discuss how people use it on a day-to-day basis
 
@@ -6,7 +6,7 @@ You may know a guy who told you he owns Bitcoin, or that he bought something wit
 
 This can be kind of confusing because there are a bunch of different ways to own or spend Bitcoin, and the word "wallet" is used to describe most of them, despite referring to completely different things (software in one case, a piece of paper in another, for example).
 
-**** Bitcoin banks
+#### Bitcoin banks
 
 If the guy you know is in the US, he probably got his Bitcoin on Coinbase, a very user-friendly website where you can exchange US dollars for Bitcoin. Once you own Bitcoin, you can send it to any address you wish or exchange it for a few other different types of cryptocurrency on the platform, or convert if back into dollars if you regret your purchase.
 
@@ -18,7 +18,7 @@ Bitcoin Core is open-source software, which means you can read the code yourself
 
 Cryptocurrency software pretty much has to be open-source, because otherwise it isn't trustless. If you can't read the code of your Bitcoin client, you would have no way of knowing it's not storing your private keys on a database somewhere and handing them over to the developers so they can take all your money! There are many competing open-source Bitcoin clients - I don't know if there are any closed source ones. If you see a client available that doesn't publish its code, this is an enormous red flag and you should not use it. 
 
-**** Different ways to store and spend your Bitcoin
+#### Different ways to store and spend your Bitcoin
 
 The Bitcoin Core software is what we call a "full node", which means when you run the software, after it starts connecting to other users on the network it will download, verify, and store on your computer the blockchain (the entire history of transactions thus far). This is a major problem for most users because the blockchain at this point is over 150 GB. For almost everyone, this means that you are going to need a dedicated machine just to run a Bitcoin full node. 
 
@@ -36,7 +36,7 @@ It's logical to do something similar to this with your Bitcoin. You can keep .1 
 
 There are even more options I didn't go into here, like a hardware wallet -  a light client on a USB stick that keeps your keys as secure as possible by isolating them in a piece of silicon from which they cannot be extracted, and the Lightning network, a new service that allows for faster transactions by letting you open a sort of "bar tab" of transactions that you don't have to record on the blockchain until it's closed. Lots to talk about but this is long enough already!
 
-**** Mining in practice 
+#### Mining in practice 
 
 What if you want to make a little bit of money on the side by mining Bitcoin? 
 
