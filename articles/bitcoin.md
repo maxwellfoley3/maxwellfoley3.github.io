@@ -233,6 +233,7 @@ How is the supply limited? The rate at which new Bitcoin are created is nearly c
 
 The rate of growth in the Bitcoin supply looks like this:
 
+*Source: [Miguel Pereira](https://www.researchgate.net/publication/277311372_Distributed_Virtual_Currencies_-_The_Bitcoin_Case)
 
 As you can see, Bitcoin is created more and more slowly until a future point at which no Bitcoin will be created at all (estimated to occur in 2140). At this point, miners will not be allowed to credit new Bitcoin to themselves, and thus they will be paid only with transaction fees. Only 21 million Bitcoin will ever be created in total. 
 
@@ -248,7 +249,7 @@ It can be easily argued that Bitcoin is at least ten times better than gold, giv
 
 This is why people think it will be the gold of the future, and therefore why people have been so eager to buy it. 
 
-(If you are interested in buying it yourself, you can buy it on Cash App, Coinbase, Abra, or Gemini.)
+(If you are interested in buying it yourself, you can buy it on [Cash App](https://cash.app/), [Coinbase](https://www.coinbase.com/), [Abra](https://www.abra.com/), or [Gemini](https://gemini.com/).)
 
 If you liked this article, follow me on Twitter [@maxwellsfoley](http://twitter.com/maxwellsfoley)
 
