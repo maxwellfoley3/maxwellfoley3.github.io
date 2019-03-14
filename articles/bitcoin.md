@@ -221,7 +221,7 @@ This is quite hard to do. In fact, we will generally only be able to do things l
 
 This is also how a government could potentially destroy the Bitcoin network.  If an actor constantly 51% attacks to reverse history and replace it with a bunch of junk transactions, then no one’s payments ever end up being recorded, and it is like nothing is going on in the Bitcoin network at all. But in order to do this the government (or another actor) will need to spend as much electricity as the entire army of unsolicited volunteers from all around the world mining Bitcoin as fast as they can for a profit. So, that could be hard.
 
-
+# 4. Conclusion: Why is Bitcoin worth anything? 
 
 Now that you have read the above, you understand how we can have a currency system created purely out of code. You might still be wondering anyone considers this currency to have any value. When Bitcoin was first invented, it was essentially worthless. Since then, the price has gradually risen (with a lot of wild ups and downs along the way). At its peak, one Bitcoin was worth over twenty thousand dollars. 
 
