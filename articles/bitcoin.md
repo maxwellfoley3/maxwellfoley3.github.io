@@ -233,7 +233,7 @@ How is the supply limited? The rate at which new Bitcoin are created is nearly c
 
 The rate of growth in the Bitcoin supply looks like this:
 
-![alt text](/bitcoin-supply-curve.png)
+<img src="/bitcoin-supply-curve.png">
 
 *Source: [Miguel Pereira](https://www.researchgate.net/publication/277311372_Distributed_Virtual_Currencies_-_The_Bitcoin_Case)
 
