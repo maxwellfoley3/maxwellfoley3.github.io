@@ -235,7 +235,7 @@ The rate of growth in the Bitcoin supply looks like this:
 
 <img src="/bitcoin-supply-curve.png">
 
-*Source: [Miguel Pereira](https://www.researchgate.net/publication/277311372_Distributed_Virtual_Currencies_-_The_Bitcoin_Case)
+*Source: [Miguel Pereira](https://www.researchgate.net/publication/277311372_Distributed_Virtual_Currencies_-_The_Bitcoin_Case)*
 
 As you can see, Bitcoin is created more and more slowly until a future point at which no Bitcoin will be created at all (estimated to occur in 2140). At this point, miners will not be allowed to credit new Bitcoin to themselves, and thus they will be paid only with transaction fees. Only 21 million Bitcoin will ever be created in total. 
 
